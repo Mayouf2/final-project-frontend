@@ -1,0 +1,46 @@
+body{
+    background-color: rgb(255, 214, 199);
+    /* background-image: url("https://wallpaperaccess.com/full/253322.jpg"); */
+   background-image: url("https://wallpapercave.com/wp/wp7713574.jpg"); 
+   /* background-image: url("http://bestanimations.com/Books/pretty-book-bench-nature-water-outdoors-animated-gif.gif"); */
+   /* background-image: url("http://www.manitowoclibrary.org/wp-content/uploads/2014/12/CO_BACKGROUND-BOOKS.jpg");  */
+   background-repeat:no-repeat;
+    background-size: cover;
+}
+
+.logo{
+    width: 80px;
+    height: 80px;
+    float: left;
+    border-radius: 50%;
+}
+.main {
+    
+    width: 90%;
+    height: 90px;
+    background:rgba(34, 43, 49, 0.712);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    
+
+
+color:white;
+text-decoration: none;
+    margin: auto;
+    /* display: flex; */
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start
+    
+}
+.navitems{
+    display: flex;
+    justify-content: space-evenly ;
+    margin: auto;
+    padding-top: 3%;
+    
+}
+
+#navLink{
+    color: white;
+    
+}

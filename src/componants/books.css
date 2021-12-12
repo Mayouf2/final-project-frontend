@@ -1,0 +1,75 @@
+.headLine{
+    text-align: center;
+    width: 90%;
+    height: 50px;
+    background:rgb(34,43,49,0.7);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color:white;    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 10px;
+
+}
+.booksMain{
+    display: flex;
+    /* justify-content: center; */
+    width: 90%;
+    /* gap: 70px; */
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    margin: auto;
+    
+}
+.book{
+    
+    /* width: 20%;
+    height: 33%;
+    border: 1px solid black;
+    background-color:  rgba(175, 175, 175, 0.575); */
+font-family:Georgia, 'Times New Roman', Times, serif;
+font-size: 13px;
+width: 300px;
+background:rgb(34,43,49,0.7);
+border: 2px solid rgba(255, 255, 255, 0.2);
+color:white;
+  margin: 5px;
+  margin-top: 30px;
+  padding-bottom: 15px;
+  box-shadow: 0px 0px 10px rgb(37, 36, 36);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  
+}
+
+.bookImg{
+    width: 200px;
+    height: 250px;
+    
+}
+
+.sreachDiv{
+display: flex;
+margin: auto;
+margin-top: 10px;
+justify-content: center;
+height: 25px;
+}
+
+#icon{
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+
+#icon:hover{
+    font-size: 21px;
+}
+
+#icon:hover{
+    color: black;
+}
