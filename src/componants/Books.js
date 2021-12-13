@@ -105,10 +105,11 @@ export default function Books({token}) {
                 
                    alt="" />
                 </Link> 
+                
                 <h3>{elme.name}</h3>
                 <p>By: {elme.auther}</p>
-                <p>{elme.description}</p>
-                <p>{elme.price}</p>
+                {/* <p>{elme.description}</p> */}
+                {/* <p>{elme.price}</p> */}
                 <div id='handle'  onClick={()=>{likedHandleClick(elme._id);toggleColor(elme._id)}}><FaHeart id='icon' style={{color:elme.like}} /> </div>
                 
             </div>

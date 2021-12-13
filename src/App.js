@@ -7,6 +7,8 @@ import LogIn from "./componants/Login";
 import Header from "./componants/Header";
 import SignUp from "./componants/SignUp"
 import OneBook from "./componants/OneBook"
+import Profile from "./componants/Profile"
+
 function App() {
   const [token, setToken] = useState(() => {
     // getting stored value
@@ -33,8 +35,10 @@ function App() {
       <Route exact path="/Favorite" component={Favorite} />
       <Route exact path="/login"  render={()=>{return <LogIn setToken={setToken}/>}}/>
       <Route exact path="/SignUp" component={SignUp} />
-      <Route exact path="/OneBook" component={OneBook} />
-      <Route path="/book/:id" component={OneBook}/>
+      <Route exact path="/OneBook"  render={()=>{return <OneBook token={token}/>}} />
+      <Route path="/book/:id"  render={()=>{return <OneBook token={token}/>}}/>
+      <Route path="/Profile" render={()=>{return <Profile token={token}/>}}/>
+
       
       </BrowserRouter>
     
