@@ -52,3 +52,62 @@ height: 25px;
 #icon:hover{
     color: black;
 }
+
+@media only screen and (max-width: 600px) {
+    body {
+      background-color: lightblue;
+    }
+    .bookImg{
+        width: 140px;
+        height: 250px;
+        
+    }
+    .headLine{
+        text-align: center;
+        width: 90%;
+        height: 50px;
+        background:rgb(34,43,49,0.7);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        color:white;    margin: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 10px;
+    
+    }
+    .booksMain{
+        display: flex;
+        /* justify-content: center; */
+        width: 90%;
+        /* gap: 70px; */
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        margin: auto;
+        
+    }
+    
+    
+    .sreachDiv{
+    display: flex;
+    margin: auto;
+    margin-top: 10px;
+    justify-content: center;
+    height: 25px;
+    }
+    
+    #icon{
+        font-size: 20px;
+        font-weight: bold;
+        color: black;
+    }
+    
+    #icon:hover{
+        font-size: 21px;
+    }
+    
+    #icon:hover{
+        color: black;
+    }
+  }

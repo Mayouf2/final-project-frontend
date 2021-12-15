@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import {useHistory} from "react-router-dom"
 import axios from "axios";
+import "./home.css"
+
 
 export default function SignUp() {
   const [name, setName] = useState("");
@@ -34,20 +36,30 @@ export default function SignUp() {
     }
   };
   return (
-    <div className="signup">
+    <div className="loginDiv">
+                 <div className="formbox">
+                 <h3>Sign Up</h3>
+            <form id="form" action="" method="post">
+            <label for="">Name</label>
       <input
+      className="asd"
         onChange={(e) => {
           changeName(e);
         }}
         placeholder="enter your name"
       />
+<label for="">Email</label>
       <input
+      className="asd"
         onChange={(e) => {
           changeEmail(e);
         }}
         placeholder="enter your email"
       />
+      <label for="">Password</label>
+
       <input
+      className="asd"
         onChange={(e) => {
           changePassword(e);
         }}
@@ -55,12 +67,16 @@ export default function SignUp() {
         placeholder="enter your password"
       />
       <button
+      id="btn"
+      className="mainbox"
         onClick={() => {
           addUser();
         }}
       >
         sign up
       </button>
+      </form>	
+      </div>
     </div>
   );
 }

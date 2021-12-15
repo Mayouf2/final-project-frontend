@@ -7,7 +7,7 @@ export default function Header({token , setToken}) {
         <div>
              <div className="container">
         <div className="main" >
-        <img className="logo" src="https://i.pinimg.com/originals/9a/fc/1b/9afc1bb2edfae4ab0b3238fef09c3ec5.jpg" alt="" />
+        <img className="logo" src="https://www.thesecret.tv/wp-content/uploads/2020/04/icon-books-578x384.png" alt="" />
         {(token)?(
             <div className='navitems'>
             <Link id='navLink' to="/">Home </Link> 
@@ -15,7 +15,7 @@ export default function Header({token , setToken}) {
             <Link id='navLink' to="/Favorite">My books</Link> 
             
 <div class="dropdown">
-  <button class="dropbtn">account</button>
+  <img  className='accountImg' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfn92Uz0WoedKHZbOdgPrHJKS9lP90htuueQ&usqp=CAU" alt="" />
   <div class="dropdown-content">
   <Link className='dro' to="/Profile">Profile</Link> 
             <Link className='dro'  className="link" to="/login" onClick={()=>{setToken("")  

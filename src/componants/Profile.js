@@ -12,8 +12,10 @@ const [user, setuser] = useState([])
         .catch(err => {
           console.log(err);
         })
+    
         
     }, [token])
+
     console.log(user.userName);
     return (
         <div>

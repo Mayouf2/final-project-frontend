@@ -4,27 +4,28 @@ import { useParams } from 'react-router-dom';
 import "./OneBook.css"
 import ReactStars from "react-rating-stars-component";
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
+import { RiDeleteBin5Line } from 'react-icons/ri';
+
 
 
 
 
 export default function OneBook({token}) {
 
-    const [books, setBooks] = useState({comment:[]})
+    const [books, setBooks] = useState(null)
     const { id }= useParams()
     const [input, setInput] = useState("")
+    // const [comments, setcomments] = useState([])
 
-    useEffect(() => {
-        axios.get(`http://localhost:5000/book/${id}`)
-        .then(res =>{
-          setBooks(res.data)
-          
-        })
-        .catch(err => {
-          console.log(err);
-        })
-        
-    }, [books])
+    useEffect(async () => {
+      if(token){
+        const result = await axios.get(`http://localhost:5000/book/${id}`,{
+          headers: { authorization: "Bearer " + token },
+        });
+        setBooks(result.data);
+      }
+    }, [books]);
+
 
 
     const changeComment=(e)=>{
@@ -49,7 +50,6 @@ export default function OneBook({token}) {
             const result = await axios.put(`http://localhost:5000/comment/${id}`,
         {comment:comment},
         {headers: { authorization: "Bearer " + token }})
-        console.log(result.data);
         setBooks({...books , comment: result.data.comment})
         } catch (err) {
             console.log(err.res.data,"error");
@@ -63,42 +63,43 @@ export default function OneBook({token}) {
 };
     return (
         <div>  
+         {books?
+        <div>
         <div className='onebookmain'>
-         
-            <div className="book"> 
-           <h3>{books.name}</h3>
-           <p>By: {books.auther}</p>
-           <img className="bookImg" src={books.img}   alt="" /> 
-           {/* <p>Description: {books.description}</p> */}
-           <a className='href' href="https://www.goodreads.com" target="_blank">want to read?</a>
-                     
-       </div>
-       <div className='description'>
-        <h1>description</h1>
-        <p>Description: {books.description}</p>
-        
-        <ReactStars
-    count={5}
-    onChange={ratingChanged}
-    size={24}
-    activeColor="#ffd700"
-  />
-       </div>
-       </div>
-       <div className='comments'>
-       <div>
-       <input type="text" onChange={(e)=>{changeComment(e)}}/>
-         <button onClick={()=>{addComment()}}>add</button>
-         <button  onClick={()=>{deletecomment()}}>delete</button>
-       </div>
-         <h1>{books.comment.map((elm,i)=>{
-                return <div className='singleComment' key={i}>
-                    <p className='user'> {elm.userName}:</p> 
-                    <p className='comm'>{elm.comment}</p>
-                    <button onClick={()=>{deletecomment(elm.comment)}}>delet </button>
+            <div className="book">
+              <img className="bookImg" src={books.img} alt="" />
+              <a className='href' href="https://www.goodreads.com" target="_blank">want to read?</a>
+            </div>
+            <div className='description'>
+              <h3>{books.name}</h3>
+              <p>By: {books.auther}</p>
+              <p>{books.description}</p>
+              <ReactStars
+                count={5}
+                onChange={ratingChanged}
+                size={24}
+                activeColor="#ffd700" />
+            </div>
+          </div><div className='comments'>
+              <div>
+                <input type="text" onChange={(e) => { changeComment(e); } } />
+                <button onClick={()=>{addComment()}}>add</button>
               </div>
-            })}</h1>
-       </div>
+              <h1>{books.comment && books.comment.map((elm, i) => {
+                return <div className='singleComment' key={i}>
+                  <ReactStars
+                    count={5}
+                    onChange={ratingChanged}
+                    size={24}
+                    activeColor="#ffd700" />
+                  <p className='user'> {elm.userName}:</p>
+                  <p className='comm'>{elm.comment}</p>
+                  <button onClick={() => { deletecomment(elm.comment); } }><RiDeleteBin5Line/> </button>
+                </div>;
+              })}</h1>
+            </div>
+            </div>
+         :""}
         </div>
     )
 }
