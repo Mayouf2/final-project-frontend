@@ -92,7 +92,8 @@ export default function OneBook({token}) {
                     onChange={ratingChanged}
                     size={24}
                     activeColor="#ffd700" />
-                  <p className='user'> {elm.userName}:</p>
+                    <img src={elm.img} alt="" />
+                  <p> {elm.userName}:</p>
                   <p className='comm'>{elm.comment}</p>
                   <button onClick={() => { deletecomment(elm.comment); } }><RiDeleteBin5Line/> </button>
                 </div>;

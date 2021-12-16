@@ -1,8 +1,29 @@
-import React from 'react'
+import React , {useEffect , useState} from 'react'
 import { Link } from "react-router-dom";
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 import "./Header.css"
 
 export default function Header({token , setToken}) {
+  const [user, setUser] = useState([])
+  const { id }= useParams()
+
+  useEffect(() => {
+    axios.get(`http://localhost:5000/user`,
+    {headers: { authorization: "Bearer " + token },
+    }
+    )
+    .then(res =>{
+        setUser(res.data)
+        console.log(res.data);
+      
+    })
+    .catch(err => {
+      console.log(err);
+    })
+
+    
+}, [token])
     return (
         <div>
              <div className="container">
@@ -15,7 +36,8 @@ export default function Header({token , setToken}) {
             <Link id='navLink' to="/Favorite">My books</Link> 
             
 <div class="dropdown">
-  <img  className='accountImg' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfn92Uz0WoedKHZbOdgPrHJKS9lP90htuueQ&usqp=CAU" alt="" />
+  <img  className='accountImg' src={user.img} alt="" />
+  <span>{user.name}</span>
   <div class="dropdown-content">
   <Link className='dro' to="/Profile">Profile</Link> 
             <Link className='dro'  className="link" to="/login" onClick={()=>{setToken("")  
