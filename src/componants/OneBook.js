@@ -16,6 +16,7 @@ export default function OneBook({token}) {
     const { id }= useParams()
     const [input, setInput] = useState("")
     // const [comments, setcomments] = useState([])
+    const [rating, setRating] = useState( )
 
     useEffect(async () => {
       if(token){
@@ -92,7 +93,7 @@ export default function OneBook({token}) {
                     onChange={ratingChanged}
                     size={24}
                     activeColor="#ffd700" />
-                    <img src={elm.img} alt="" />
+                    {/* <img src={elm.img} alt="" /> */}
                   <p> {elm.userName}:</p>
                   <p className='comm'>{elm.comment}</p>
                   <button onClick={() => { deletecomment(elm.comment); } }><RiDeleteBin5Line/> </button>

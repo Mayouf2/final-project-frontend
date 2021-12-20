@@ -15,7 +15,7 @@ export default function Header({token , setToken}) {
     )
     .then(res =>{
         setUser(res.data)
-        console.log(res.data);
+        // console.log(res.data);
       
     })
     .catch(err => {
@@ -23,7 +23,7 @@ export default function Header({token , setToken}) {
     })
 
     
-}, [token])
+}, [user , token])
     return (
         <div>
              <div className="container">
@@ -40,6 +40,7 @@ export default function Header({token , setToken}) {
   <span>{user.name}</span>
   <div class="dropdown-content">
   <Link className='dro' to="/Profile">Profile</Link> 
+  <Link className='dro' to="/AddBook">Add Book</Link> 
             <Link className='dro'  className="link" to="/login" onClick={()=>{setToken("")  
              }}>Log out</Link>
   </div>

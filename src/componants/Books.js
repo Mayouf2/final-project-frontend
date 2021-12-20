@@ -3,6 +3,9 @@ import axios from 'axios'
 import "./books.css"
 import { FaHeart } from 'react-icons/fa';
 import { Link} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
+
 
 
 
@@ -12,6 +15,8 @@ export default function Books({token}) {
     const [findsearch , setFindsearch] = useState("")
     const [changeLikeColor, setChangeLikeColor] = useState(false)
     const [like, setLike] = useState(false)
+    const { id }= useParams()
+
 
 
 
@@ -45,14 +50,14 @@ export default function Books({token}) {
             
         }
 
-        const likedHandleClick = async (_id) => {
-            let response = await axios.post(`http://localhost:5000/like/${_id}`, {
+        const likedHandleClick = async (id) => {
+            let response = await axios.post(`http://localhost:5000/like/${id}`, {
                 
             },  
             { headers: { authorization: "Bearer " + token } }
             );
         
-                console.log(response.data)
+                console.log(response.data.Like)
             }
             
 

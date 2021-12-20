@@ -8,6 +8,7 @@ import Header from "./componants/Header";
 import SignUp from "./componants/SignUp"
 import OneBook from "./componants/OneBook"
 import Profile from "./componants/Profile"
+import AddBook from "./componants/AddBook"
 
 function App() {
   const [token, setToken] = useState(() => {
@@ -32,12 +33,14 @@ function App() {
     <Header token={token} setToken={setToken}/>
       <Route exact path="/" component={Home} />
       <Route exact path="/Books" render={()=>{return <Books token={token}/>}} />
-      <Route exact path="/Favorite" component={Favorite} />
+      <Route exact path="/Favorite"  render={()=>{return <Favorite token={token}/>}} />
       <Route exact path="/login"  render={()=>{return <LogIn setToken={setToken}/>}}/>
       <Route exact path="/SignUp" component={SignUp} />
       <Route exact path="/OneBook"  render={()=>{return <OneBook token={token}/>}} />
       <Route path="/book/:id"  render={()=>{return <OneBook token={token}/>}}/>
-      <Route path="/Profile" render={()=>{return <Profile token={token}/>}}/>
+      <Route path="/Profile" render={()=>{return <Profile token={token} setToken={setToken}/>}}/>
+      <Route exact path="/AddBook" render={()=>{return <AddBook token={token}  />}}/>
+
 
       
       </BrowserRouter>

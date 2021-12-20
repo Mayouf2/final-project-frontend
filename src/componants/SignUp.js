@@ -39,7 +39,7 @@ export default function SignUp() {
     <div className="loginDiv">
                  <div className="formbox">
                  <h3>Sign Up</h3>
-            <form id="form" action="" method="post">
+            <form id="form" >
             <label for="">Name</label>
       <input
       className="asd"
@@ -67,6 +67,7 @@ export default function SignUp() {
         placeholder="enter your password"
       />
       <button
+      type="button"
       id="btn"
       className="mainbox"
         onClick={() => {
