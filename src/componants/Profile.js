@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom';
 import "./Profile.css"
 import {useHistory} from "react-router-dom"
+import Button from 'react-bootstrap/Button'
 
 
 export default function Profile({token , setToken}) {
@@ -15,6 +16,10 @@ const [email, setEmail] = useState("")
 const [password, setpassword] = useState("")
 const [img, setImg] = useState("")
 const [bio, setBio] = useState("")
+
+
+//////////////////////
+const [updateVes, setupdateVes] = useState(false)
 //////////////////////////////////////////////
 // const { id }= useParams()
 
@@ -37,6 +42,10 @@ const [bio, setBio] = useState("")
         
     }, [user])
     
+    const on = () => {
+        
+            setupdateVes(!updateVes)
+    }
 
     const updateUserName = () =>{
         const res = axios.put("http://localhost:5000/username" , 
@@ -114,6 +123,26 @@ const [bio, setBio] = useState("")
             history.push("/SignUp")
         }
           }
+          const Result =  <>
+            <div className='userup'>
+            <label htmlFor="">Name</label>
+            <input type="text" value={name} onChange={(e)=>{updateName(e)}}/>
+            {/* <label htmlFor=""  >Email</label>
+            <input type="text" onChange={(e)=>{updateEmail(e)}}/> */}
+            {/* <label htmlFor=""  >Password</label>
+            <input type="text" onChange={(e)=>{updatePassword(e)}}/> */}
+            <label htmlFor="" >image</label>
+            <input type="text" value={img}  onChange={(e)=>{updateImg(e)}}/>
+            <label htmlFor=""  >Bio</label>
+            <textarea name="" id="" value={bio}  cols="25" rows="5" onChange={(e)=>{updateBio(e)}}></textarea>
+            <button onClick={()=>{
+                updateUserName();
+                // updateUserEmail();
+                updateUserImage();
+                updateUserBio();
+                }}>Save</button>
+            </div>
+              </>
 
     return (
         <div>
@@ -125,28 +154,13 @@ const [bio, setBio] = useState("")
              {/* <h1>{user.email}</h1> */}
              <h1>{user.bio}</h1>
              <h1>{user.admin}</h1>
-             <button  className='del' onClick={()=>{deleteProfile()}}>Delete profile</button>
+             <div className='buttons'>
+             <button  className='del'  onClick={()=>{deleteProfile()}}>Delete profile</button>
+             <button className='up' onClick={on}>Update profile</button>
+             { updateVes ? Result : "" }
+             </div>
             </div>
 
-
-            <div className='user'>
-            <label htmlFor="">Name</label>
-            <input type="text"  onChange={(e)=>{updateName(e)}}/>
-            <label htmlFor=""  >Email</label>
-            <input type="text" onChange={(e)=>{updateEmail(e)}}/>
-            {/* <label htmlFor=""  >Password</label>
-            <input type="text" onChange={(e)=>{updatePassword(e)}}/> */}
-            <label htmlFor="" >image</label>
-            <input type="text"  onChange={(e)=>{updateImg(e)}}/>
-            <label htmlFor=""  >Bio</label>
-            <input type="text" onChange={(e)=>{updateBio(e)}}/>
-            <button onClick={()=>{
-                updateUserName();
-                updateUserEmail();
-                updateUserImage();
-                updateUserBio();
-                }}>Save</button>
-            </div>
            
         </div>
     )

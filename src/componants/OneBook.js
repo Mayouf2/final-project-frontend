@@ -15,8 +15,8 @@ export default function OneBook({token}) {
     const [books, setBooks] = useState(null)
     const { id }= useParams()
     const [input, setInput] = useState("")
-    // const [comments, setcomments] = useState([])
-    const [rating, setRating] = useState( )
+    const [comments, setcomments] = useState([])
+    const [rating, setRating] = useState(0)
 
     useEffect(async () => {
       if(token){
@@ -27,6 +27,14 @@ export default function OneBook({token}) {
       }
     }, [books]);
 
+
+    useEffect(async () => {
+  const result = await axios.get(`http://localhost:5000/comment` , 
+  { headers: { authorization: "Bearer " + token } },
+  ) 
+  setcomments(result.data)
+
+    } ,  []);
 
 
     const changeComment=(e)=>{

@@ -12,7 +12,6 @@ import AddBook from "./componants/AddBook"
 
 function App() {
   const [token, setToken] = useState(() => {
-    // getting stored value
     const saved = localStorage.getItem("token");
     const initialValue = JSON.parse(saved);
     return initialValue ; });
@@ -20,7 +19,6 @@ function App() {
 
 
   useEffect(() => {
-    // storing input name
     localStorage.setItem("token", JSON.stringify(token));
   }, [token]);
 

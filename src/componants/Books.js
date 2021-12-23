@@ -13,9 +13,14 @@ import { useParams } from 'react-router-dom';
 export default function Books({token}) {
     const [Books, setBooks] = useState([])
     const [findsearch , setFindsearch] = useState("")
-    const [changeLikeColor, setChangeLikeColor] = useState(false)
     const [like, setLike] = useState(false)
     const { id }= useParams()
+
+    const  [toggleHeart, setToggleHeart] = useState(false)
+
+    const changeColor = () =>{
+     setToggleHeart(!toggleHeart)
+    }
 
 
 
@@ -46,7 +51,7 @@ export default function Books({token}) {
         const searchFun = (e)=>{
     
                 setFindsearch(e.target.value)
-                console.log((Books));
+                // console.log((Books));
             
         }
 
@@ -56,21 +61,21 @@ export default function Books({token}) {
             },  
             { headers: { authorization: "Bearer " + token } }
             );
-        
+            
                 console.log(response.data.Like)
             }
-            
 
-        // function toggleColor(_id){
-        //     const arrCopy = [...Books]
-        //     if (arrCopy[_id-1].like == "black"){
-        //         arrCopy[_id-1].like = "red"
-        //     }else{
-        //         arrCopy[_id-1].like = "black"
-        //     }
-        //     setBooks(arrCopy)
-        //     console.log(arrCopy);
-        // }
+        const removeLike = async (id ,i)=>{
+            const res = await axios.delete(`http://localhost:5000/like/${id}`,{
+              headers:{authorization: "Bearer " + token},
+            });
+        console.log(res.data);
+        const copied = [...like]
+        copied.splice(i,1)
+        setLike(copied);
+ 
+              }
+            
     
     return (
         <div>
@@ -90,38 +95,28 @@ export default function Books({token}) {
         if(findsearch === ""){
             return elme
         }
-        else if (elme.name.toLowerCase().includes(findsearch.toLocaleLowerCase())){
+        else if (elme.name.toLowerCase().includes(findsearch.toLowerCase())){
             return elme
         }
       }).map((elme , i)=>{
             return ( <div key={i}>
-               
-                                
-                            
+             
             <div className="book"> 
-           
-                
-                <Link  to={`/book/${elme._id}`}>
+            <Link  to={`/book/${elme._id}`}>
                 <img className="bookImg" src={elme.img}
-                
-                
-                
                    alt="" />
                 </Link> 
-                
                 <h3>{elme.name}</h3>
                 <p>By: {elme.auther}</p>
                 {/* <p>{elme.description}</p> */}
                 {/* <p>{elme.price}</p> */}
-                <div id='handle'  onClick={()=>{likedHandleClick(elme._id)}}><FaHeart id='icon' style={{color:elme.like}} /> </div>
-                
+                <div id='handle'  onClick={()=>{likedHandleClick(elme._id)}}><FaHeart className={
+            toggleHeart ? 'heart active' : 'heart'} onClick={()=>{changeColor(elme._id)}} /> </div>  
+
             </div>
-            
         </div>)
-        })}
-            
+        })} 
         </div>
-        
         </div>
     )
 }

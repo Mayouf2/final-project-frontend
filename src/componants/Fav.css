@@ -1,0 +1,25 @@
+.favMain{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fav{
+    width: 900px;
+    background:rgb(34,43,49,0.7);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color:white; 
+}
+
+.FavImg{
+    width: 100px;
+    height: 100px;
+}
+
+.info{
+display: inline-block;
+}
+
+.deleteFav{
+    display: inline-block;
+}
