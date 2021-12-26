@@ -3,7 +3,8 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom';
 import "./Profile.css"
 import {useHistory} from "react-router-dom"
-import Button from 'react-bootstrap/Button'
+
+
 
 
 export default function Profile({token , setToken}) {
@@ -16,6 +17,10 @@ const [email, setEmail] = useState("")
 const [password, setpassword] = useState("")
 const [img, setImg] = useState("")
 const [bio, setBio] = useState("")
+
+
+
+
 
 
 //////////////////////
@@ -102,9 +107,18 @@ const [updateVes, setupdateVes] = useState(false)
     const updatePassword = (e)=>{
         setpassword(e.target.value)
     }
+
+
+    //////////////////////////////////////////
+    //////////////////////////////////////////
+
     const updateImg = (e)=>{
         setImg(e.target.value)
     }
+
+
+    //////////////////////////////////////////
+    //////////////////////////////////////////
     const updateBio = (e)=>{
         setBio(e.target.value)
     }
@@ -133,6 +147,8 @@ const [updateVes, setupdateVes] = useState(false)
             <input type="text" onChange={(e)=>{updatePassword(e)}}/> */}
             <label htmlFor="" >image</label>
             <input type="text" value={img}  onChange={(e)=>{updateImg(e)}}/>
+            <div className="output">
+      </div>
             <label htmlFor=""  >Bio</label>
             <textarea name="" id="" value={bio}  cols="25" rows="5" onChange={(e)=>{updateBio(e)}}></textarea>
             <button onClick={()=>{
@@ -140,6 +156,7 @@ const [updateVes, setupdateVes] = useState(false)
                 // updateUserEmail();
                 updateUserImage();
                 updateUserBio();
+                setupdateVes(false);
                 }}>Save</button>
             </div>
               </>

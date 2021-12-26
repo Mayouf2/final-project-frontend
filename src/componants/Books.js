@@ -13,7 +13,7 @@ import { useParams } from 'react-router-dom';
 export default function Books({token}) {
     const [Books, setBooks] = useState([])
     const [findsearch , setFindsearch] = useState("")
-    const [like, setLike] = useState(false)
+    const [like, setLike] = useState([])
     const { id }= useParams()
 
     const  [toggleHeart, setToggleHeart] = useState(false)
@@ -75,6 +75,9 @@ export default function Books({token}) {
         setLike(copied);
  
               }
+              const changeCoolor=(e)=>{
+                setLike(!like)
+              }
             
     
     return (
@@ -99,8 +102,17 @@ export default function Books({token}) {
             return elme
         }
       }).map((elme , i)=>{
+        for(let i = 0; i < like.length ; i++) {
+                console.log(like[i],"liked");
+                if(like[i]._id==elme._id){
+                  return (
+                    <div>
+                   <FaHeart style={{color:"red"}} onClick={()=>{likedHandleClick(elme._id);changeCoolor()}} />
+                    </div>        
+                  )
+                }
+               }
             return ( <div key={i}>
-             
             <div className="book"> 
             <Link  to={`/book/${elme._id}`}>
                 <img className="bookImg" src={elme.img}
@@ -110,9 +122,8 @@ export default function Books({token}) {
                 <p>By: {elme.auther}</p>
                 {/* <p>{elme.description}</p> */}
                 {/* <p>{elme.price}</p> */}
-                <div id='handle'  onClick={()=>{likedHandleClick(elme._id)}}><FaHeart className={
-            toggleHeart ? 'heart active' : 'heart'} onClick={()=>{changeColor(elme._id)}} /> </div>  
-
+                {/* <div id='handle'  onClick={()=>{likedHandleClick(elme._id)}}><FaHeart style={{color:"black"}} onClick={()=>{changeColor(elme._id)}} /> </div>   */}
+                <FaHeart style={{color:"black"}} onClick={()=>{likedHandleClick(elme._id);changeCoolor()}} />
             </div>
         </div>)
         })} 
