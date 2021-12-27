@@ -15,21 +15,15 @@ export default function Favorite({token}) {
     // const [Books, setBooks] = useState([])
     const { id }= useParams()
 
-    useEffect(() => {
-            axios.get(`http://localhost:5000/like` , 
-        {headers: { authorization: "Bearer " + token },
-    }
-    )
-        .then(res =>{
-          setLikes(res.data)
-//   console.log("likes",res.data)
-        })
-        .catch(err => {
-          console.log(err);
-        }) 
-        
-    
-    }, [like])
+    useEffect(async () => {
+        if(token){
+            const res = await axios.get("http://localhost:5000/like", {
+              headers: { authorization: "Bearer " + token },
+            });
+            console.log(res.data);
+            setLikes (res.data);
+          }
+          }, []);
 
     const removeLike = async (id ,i)=>{
             const res = await axios.delete(`http://localhost:5000/like/${id}`,{
@@ -39,38 +33,10 @@ export default function Favorite({token}) {
         const copied = [...like]
         copied.splice(i,1)
         setLikes(copied);
-            // setLikes(res);
-           
-            
+                       
               }
-    
-
-    // const likedHandleClick = async (id) => {
-    //         let response = await axios.post(`http://localhost:5000/like/${id}`, {
-    //             id: id
-                
-    //         });
-            
-    //         // if (response.data == "-1") {
-    //         //     response = await axios.delete(`http://localhost:5000/like/${id}`)
-    //         //     console.log('delete' , response.data);
-    //         // }else{
-    //         //     setBooks(response.data)
-    //         // }
-            
-    //     }
-        // function toggleColor(id){
-        //     const arrCopy = [...Books]
-        //     if (arrCopy[id-1].like == "black"){
-        //         arrCopy[id-1].like = "red"
-        //     }else{
-        //         arrCopy[id-1].like = "black"
-        //     }
-        //     setBooks(arrCopy)
-        // }
     return (
         <div>
-        <h1> </h1>
         <div className="favMain">
             {like.map((elme , i)=>{
             return ( <div key={i}>

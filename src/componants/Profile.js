@@ -3,7 +3,9 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom';
 import "./Profile.css"
 import {useHistory} from "react-router-dom"
+import { render } from "react-dom";
 
+import { storage } from "../firebase/firebase";
 
 
 
@@ -15,12 +17,13 @@ const history = useHistory();
 const [name, setName] = useState("")
 const [email, setEmail] = useState("")
 const [password, setpassword] = useState("")
-const [img, setImg] = useState("")
+const [image, setImage] = useState(null);
 const [bio, setBio] = useState("")
 
 
 
-
+const [url, setUrl] = useState("");
+const [progress, setProgress] = useState(0);
 
 
 //////////////////////
@@ -45,7 +48,7 @@ const [updateVes, setupdateVes] = useState(false)
         })
     
         
-    }, [user])
+    }, [user , url ,progress , image])
     
     const on = () => {
         
@@ -76,13 +79,13 @@ const [updateVes, setupdateVes] = useState(false)
         const updateUserImage = () =>{
         const res = axios.put("http://localhost:5000/userimage" , 
         {
-        newImg:img ,
+        newImg:url
         },
         {headers: { authorization: "Bearer " + token },
         },
        
         )
-        setImg(res.data)
+        setImage(res.data)
         }
         const updateUserBio = () =>{
         const res = axios.put("http://localhost:5000/userbio" , 
@@ -113,10 +116,44 @@ const [updateVes, setupdateVes] = useState(false)
     //////////////////////////////////////////
 
     const updateImg = (e)=>{
-        setImg(e.target.value)
+        if (e.target.files[0]) {
+        setImage(e.target.files[0]);
+    }
     }
 
+    
+    //////////////////////////////////////////
+    //////////////////////////////////////////
+    //////////////////////////////////////////
+    //////////////////////////////////////////
+  const handleUpload = () => {
+    const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    uploadTask.on(
+      "state_changed",
+      snapshot => {
+        const progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        setProgress(progress);
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+        storage
+          .ref("images")
+          .child(image.name)
+          .getDownloadURL()
+          .then(url => {
+            setUrl(url);
+          });
+      }
+    );
+  };
 
+
+    //////////////////////////////////////////
+    //////////////////////////////////////////
     //////////////////////////////////////////
     //////////////////////////////////////////
     const updateBio = (e)=>{
@@ -146,16 +183,16 @@ const [updateVes, setupdateVes] = useState(false)
             {/* <label htmlFor=""  >Password</label>
             <input type="text" onChange={(e)=>{updatePassword(e)}}/> */}
             <label htmlFor="" >image</label>
-            <input type="text" value={img}  onChange={(e)=>{updateImg(e)}}/>
+            <input type="file"   onChange={(e)=>{updateImg(e)}}/>
+            <button onClick={()=>{handleUpload()}}>Upload</button>
             <div className="output">
       </div>
             <label htmlFor=""  >Bio</label>
             <textarea name="" id="" value={bio}  cols="25" rows="5" onChange={(e)=>{updateBio(e)}}></textarea>
             <button onClick={()=>{
                 updateUserName();
-                // updateUserEmail();
-                updateUserImage();
                 updateUserBio();
+                updateUserImage();
                 setupdateVes(false);
                 }}>Save</button>
             </div>
@@ -174,6 +211,7 @@ const [updateVes, setupdateVes] = useState(false)
              <div className='buttons'>
              <button  className='del'  onClick={()=>{deleteProfile()}}>Delete profile</button>
              <button className='up' onClick={on}>Update profile</button>
+             {/* <img src={url || "http://via.placeholder.com/300"} alt="firebase-image" /> */}
              { updateVes ? Result : "" }
              </div>
             </div>
@@ -182,3 +220,4 @@ const [updateVes, setupdateVes] = useState(false)
         </div>
     )
 }
+render(<Profile />, document.querySelector("#root"));

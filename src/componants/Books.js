@@ -16,11 +16,11 @@ export default function Books({token}) {
     const [like, setLike] = useState([])
     const { id }= useParams()
 
-    const  [toggleHeart, setToggleHeart] = useState(false)
+    // const  [toggleHeart, setToggleHeart] = useState(false)
 
-    const changeColor = () =>{
-     setToggleHeart(!toggleHeart)
-    }
+    // const changeColor = () =>{
+    //  setToggleHeart(!toggleHeart)
+    // }
 
 
 
@@ -62,7 +62,7 @@ export default function Books({token}) {
             { headers: { authorization: "Bearer " + token } }
             );
             
-                console.log(response.data.Like)
+                console.log(response.data)
             }
 
         const removeLike = async (id ,i)=>{
@@ -102,11 +102,12 @@ export default function Books({token}) {
             return elme
         }
       }).map((elme , i)=>{
-        for(let i = 0; i < like.length ; i++) {
-                console.log(like[i],"liked");
-                if(like[i]._id==elme._id){
+        for(let x = 0; x < like.length ; x++) {
+                console.log(like[x],"like");
+                if(like[x]._id==elme._id){
                   return (
                     <div>
+                   <br />
                    <FaHeart style={{color:"red"}} onClick={()=>{likedHandleClick(elme._id);changeCoolor()}} />
                     </div>        
                   )
