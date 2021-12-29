@@ -23,7 +23,7 @@ export default function Favorite({token}) {
             console.log(res.data);
             setLikes (res.data);
           }
-          }, []);
+          }, [like]);
 
     const removeLike = async (id ,i)=>{
             const res = await axios.delete(`http://localhost:5000/like/${id}`,{

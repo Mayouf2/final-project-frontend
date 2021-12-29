@@ -2,8 +2,11 @@
     display: flex;
     padding-left: 10%;
 }
-.href{
+.href{ 
+    margin-top: 10px;
     color: white;
+    border: 3px solid #409D69;
+    background-color: #409D69;
 }
 
 .description{

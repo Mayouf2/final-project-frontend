@@ -29,7 +29,7 @@ function App() {
     
     <BrowserRouter>
     <Header token={token} setToken={setToken}/>
-      <Route exact path="/" component={Home} />
+      <Route exact path="/" render={()=>{return <Home token={token} setToken={setToken}/>}}/>
       <Route exact path="/Books" render={()=>{return <Books token={token}/>}} />
       <Route exact path="/Favorite"  render={()=>{return <Favorite token={token}/>}} />
       <Route exact path="/login"  render={()=>{return <LogIn setToken={setToken}/>}}/>

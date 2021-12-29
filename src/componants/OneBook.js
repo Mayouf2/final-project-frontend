@@ -5,6 +5,15 @@ import "./OneBook.css"
 import ReactStars from "react-rating-stars-component";
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
 import { RiDeleteBin5Line } from 'react-icons/ri';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import parse from "html-react-parser"
+
+
+import InputEmoji from 'react-input-emoji'
+
+
+
 
 
 
@@ -17,6 +26,7 @@ export default function OneBook({token}) {
     const [input, setInput] = useState("")
     const [comments, setcomments] = useState([])
     const [rating, setRating] = useState(0)
+
 
     useEffect(async () => {
       if(token){
@@ -66,9 +76,12 @@ export default function OneBook({token}) {
     }
 
     
+    function handleOnEnter (text) {
+        console.log('enter', text)
+      }
 
     const ratingChanged = (newRating) => {
-  console.log(newRating);
+      setRating(newRating);
 };
     return (
         <div>  
@@ -77,7 +90,7 @@ export default function OneBook({token}) {
         <div className='onebookmain'>
             <div className="book">
               <img className="bookImg" src={books.img} alt="" />
-              <a className='href' href="https://www.goodreads.com" target="_blank">want to read?</a>
+              <a className='href' href={books.url} target="_blank">want to read?</a>
             </div>
             <div className='description'>
               <h3>{books.name}</h3>
@@ -88,11 +101,11 @@ export default function OneBook({token}) {
                 onChange={ratingChanged}
                 size={24}
                 activeColor="#ffd700" />
+                <p>{rating}</p>
             </div>
           </div><div className='comments'>
               <div>
-                <input type="text" onChange={(e) => { changeComment(e); } } />
-                <button onClick={()=>{addComment()}}>add</button>
+                {/* <textarea    type="text" onChange={(e) => { changeComment(e); } }  id="" cols="135" rows="10"></textarea> */}
               </div>
               <h1>{books.comment && books.comment.map((elm, i) => {
                 return <div className='singleComment' key={i}>
@@ -101,12 +114,36 @@ export default function OneBook({token}) {
                     onChange={ratingChanged}
                     size={24}
                     activeColor="#ffd700" />
+
                     {/* <img src={elm.img} alt="" /> */}
                   <p> {elm.userName}:</p>
-                  <p className='comm'>{elm.comment}</p>
+                  <p >{parse( elm.comment)}</p>
+                  <p>{elm.rating}</p>
                   <button onClick={() => { deletecomment(elm.comment); } }><RiDeleteBin5Line/> </button>
                 </div>;
               })}</h1>
+              <div>
+              <CKEditor
+          editor={ClassicEditor}
+          data={input}
+          onChange={(e, editor) => { const data = editor.getData()
+            setInput(data)
+          }}
+        />
+              </div>
+
+
+        {/* <InputEmoji
+          value={input}
+          onChange={setInput}
+          cleanOnEnter
+          onEnter={addComment}
+          placeholder="Type a message"
+        /> */}
+
+
+ <button onClick={()=>{addComment()}}>comment</button>
+
             </div>
             </div>
          :""}
