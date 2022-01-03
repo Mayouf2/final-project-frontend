@@ -46,9 +46,13 @@ export default function Header({ token, setToken }) {
                   <Link className="dro" to="/Profile">
                     Profile
                   </Link>
-                  <Link className="dro" to="/AddBook">
-                    Add Book
-                  </Link>
+
+                  {user.admin == true ? (<Link className="dro" to="/AddBook">
+                  Admin dashboard
+                  </Link>):(
+                  <h1> </h1>
+                  )}
+                    
                   <Link
                     className="dro"
                     className="link"

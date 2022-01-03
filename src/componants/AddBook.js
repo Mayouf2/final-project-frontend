@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React , {useState , useEffect} from 'react'
-import "./home.css"
+import "./AddBook.css"
 import {useHistory} from "react-router-dom"
 
 
@@ -12,6 +12,9 @@ export default function AddBook({token}) {
     const [img, setimg] = useState("")
     const [description, setdescription] = useState("")
     const history = useHistory();
+
+    const [user, setUser] = useState([])
+
     
 
 const addName = (e)=>{
@@ -47,12 +50,44 @@ const addBook = async()=>{
 }
 
 
+useEffect(() => {
+        axios.get(`http://localhost:5000/getUsers`,
+        
+        {headers: { authorization: "Bearer " + token },
+        },
+
+        )
+       
+        .then(res =>{
+            setUser(res.data)
+          
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    
+        
+    }, [user])
+
 
 
 //  name ,auther, img ,description,
 
     return (
         <div>
+        <div className='users'>
+        <h2>Users</h2>
+            {user && user.map((elme , i )=>{
+                return (<div>
+                <div className='usersInfo'>
+                <img className='imgs' src={elme.img} alt="" />
+                <h3 className='username'>{elme.name}</h3> <br />
+                <p className='join'>Joined {elme.time}</p>
+                </div>
+             
+                </div>)
+            })}
+        </div>
         <div className="formbox">
             <h1>add book</h1>
             <form id="form" >
@@ -64,7 +99,7 @@ const addBook = async()=>{
             <input type="text" className="asd" placeholder='img'  onChange={(e)=>{addImg(e)}}/>
             <label for="">description</label>
             <input type="text" className="asd" placeholder='description'  onChange={(e)=>{addDescription(e)}}/>
-            <button type="button" id="btn" onClick={()=>{addBook()}}>Add</button>
+            <button type="button" id="btn" className='button' onClick={()=>{addBook()}}>Add</button>
             </form>
             </div>
 

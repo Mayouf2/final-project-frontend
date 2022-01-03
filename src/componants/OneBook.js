@@ -75,6 +75,9 @@ export default function OneBook({token}) {
         }
     }
 
+    const addrating = (e)=>{
+      setRating(e.target.value)
+    }
     
     function handleOnEnter (text) {
         console.log('enter', text)
@@ -100,22 +103,32 @@ export default function OneBook({token}) {
                 count={5}
                 onChange={ratingChanged}
                 size={24}
+                value={books.rating}
                 activeColor="#ffd700" />
-                <p>{rating}</p>
             </div>
           </div><div className='comments'>
               <div>
-                {/* <textarea    type="text" onChange={(e) => { changeComment(e); } }  id="" cols="135" rows="10"></textarea> */}
+                <input    type="text" onChange={(e) => { changeComment(e); } } ></input>
+                <select id="cars" name="cars" onChange={(e)=>{addrating(e)}}>
+    <option value="0">Rate:</option>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+  </select>
+                <button onClick={()=>{addComment()}}>comment</button>
               </div>
               <h1>{books.comment && books.comment.map((elm, i) => {
                 return <div className='singleComment' key={i}>
-                  <ReactStars
-                    count={5}
-                    onChange={ratingChanged}
-                    size={24}
-                    activeColor="#ffd700" />
 
                     {/* <img src={elm.img} alt="" /> */}
+                    <ReactStars
+                count={5}
+                onChange={ratingChanged}
+                size={24}
+                value={elm.rating}
+                activeColor="#ffd700" />
                   <p> {elm.userName}:</p>
                   <p >{parse( elm.comment)}</p>
                   <p>{elm.rating}</p>
@@ -123,13 +136,13 @@ export default function OneBook({token}) {
                 </div>;
               })}</h1>
               <div>
-              <CKEditor
+              {/* <CKEditor
           editor={ClassicEditor}
           data={input}
           onChange={(e, editor) => { const data = editor.getData()
             setInput(data)
           }}
-        />
+        /> */}
               </div>
 
 
@@ -141,8 +154,6 @@ export default function OneBook({token}) {
           placeholder="Type a message"
         /> */}
 
-
- <button onClick={()=>{addComment()}}>comment</button>
 
             </div>
             </div>

@@ -34,7 +34,7 @@ export default function Books({token}) {
          .then(res =>{
            
            setBooks(res.data)
-           console.log(res.data);
+          //  console.log(res.data);
          })
          .catch(error => {
            console.log(error ,"err");
@@ -44,6 +44,16 @@ export default function Books({token}) {
          get()
          
          }, [])
+
+         useEffect(async () => {
+        if(token){
+            const res = await axios.get("http://localhost:5000/like", {
+              headers: { authorization: "Bearer " + token },
+            });
+            // console.log(res.data);
+            setLike (res.data);
+          }
+          }, [like]);
 
 
        
@@ -70,9 +80,7 @@ export default function Books({token}) {
               headers:{authorization: "Bearer " + token},
             });
         console.log(res.data);
-        const copied = [...like]
-        copied.splice(i,1)
-        setLike(copied);
+        setLike(res);
  
               }
               const changeCoolor=(e)=>{
@@ -102,14 +110,24 @@ export default function Books({token}) {
             return elme
         }
       }).map((elme , i)=>{
-        for(let x = 0; x < like.length ; x++) {
-                console.log(like[x],"like");
-                if(like[x]._id==elme._id){
+        for(let i = 0; i < like.length ; i++) {
+                if(like[i]._id === elme._id){
                   return (
-                    <div>
-                   <br />
-                   <FaHeart style={{color:"red"}} onClick={()=>{likedHandleClick(elme._id);changeCoolor()}} />
-                    </div>        
+                   
+                   <div className="book"> 
+            <Link  to={`/book/${elme._id}`}>
+                <img className="bookImg" src={elme.img}
+                   alt="" />
+                </Link> 
+                <h3>{elme.name}</h3>
+                <p>By: {elme.auther}</p>
+                {/* <p>{elme.description}</p> */}
+                {/* <p>{elme.price}</p> */}
+                {/* <div id='handle'  onClick={()=>{likedHandleClick(elme._id)}}><FaHeart style={{color:"black"}} onClick={()=>{changeColor(elme._id)}} /> </div>   */}
+            
+                   <FaHeart style={{color:"red"}} onClick={()=>{removeLike(elme._id)}} />
+                   </div>
+                   
                   )
                 }
                }
@@ -124,7 +142,7 @@ export default function Books({token}) {
                 {/* <p>{elme.description}</p> */}
                 {/* <p>{elme.price}</p> */}
                 {/* <div id='handle'  onClick={()=>{likedHandleClick(elme._id)}}><FaHeart style={{color:"black"}} onClick={()=>{changeColor(elme._id)}} /> </div>   */}
-                <FaHeart style={{color:"black"}} onClick={()=>{likedHandleClick(elme._id);changeCoolor()}} />
+                <FaHeart style={{color:"black"}} onClick={()=>{likedHandleClick(elme._id)}} />
             </div>
         </div>)
         })} 

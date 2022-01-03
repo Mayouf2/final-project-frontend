@@ -3,7 +3,7 @@
     padding: 0;
 }
 #navLink:hover{
-    border-bottom: 2px solid rgb(169, 3, 3);
+    border-bottom: 2px solid rgb(155, 155, 155);
     border-end-start-radius: 5px;
     }
         
@@ -22,7 +22,7 @@
 
 
 
-.formbox{
+.formbox1{
     background:rgb(34,43,49,0.7);
     color:white;
     
@@ -31,22 +31,22 @@
     margin-top: 10px;
     
 }
-.formbox *{
+.formbox1 *{
     margin: 0;
     
 }
-.formbox h3{
+.formbox1 h3{
     font-family: var(--mainfont);
     font-size: 1.5rem;
     margin-bottom: 1rem;
 }
-.formbox form label{
+.formbox1 form label{
     color: rgba(255, 255, 255, 0.8);
     display: inline-block;
     max-width: 100%;
     margin-bottom: 0.3rem;
 }
-.formbox form .asd{
+.formbox1 form .asd{
     border: 2px solid rgba(255, 255, 255, 0.2);
     box-shadow: none;
     /* background: transparent; */
@@ -140,13 +140,99 @@ a .mainbox{
 .HomebookImg{
     width: 100px;
     height: 150px;
+    position: relative;
+    top: 40px;
 }
-.HomeFavButton{
+
+.HomePosts{
+    /* display: flex; */
+    border: 1px solid black;
+    margin: 10px;
+    padding-top: 10px;
+}
+
+.HomeLikeButton{
+    display: flex;
+    align-items: flex-end
+}
+
+.hide{
+    white-space: pre-line; 
+    width: 10px; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+.deletePostButton{
+    position: relative;
+    left: 370px;
+}
+
+.HomeBookInfo{
+    position: relative;
+    left: 110px;
+    bottom: 115px;
+}
+
+.HomeUserInfo{
+    position: relative;
+    bottom: 135px;
+    font-weight: bold;
+    right: 80px;
+
+}
+
+.HomeIgm{
+    width: 30px;
+    height: 30px;
+    position: relative;
+    bottom: 120px;
+    right: 90px;
+    border-radius: 50%;
+}
+
+.HomeDesc{
+    font-size: 13px;
+    position: relative;
+    bottom: 30px;
+
+}
+
+
+.url{
+    position: relative;
+    bottom: 100px;
+    left: 110px;
+    background-color: rgb(77, 77, 77); 
+    border: 3px solid rgb(77, 77, 77); 
+border-width: 5px;
+    color: white;  
+}
+
+.stars{
+    position: relative;
+    bottom: 110px;
+    left: 110px;
+}
+
+.time{
+    white-space: nowrap; 
+    width: 152px; 
+    overflow: hidden;
+    text-overflow: clip; 
+}
+
+.addButton{
+    background-color: rgb(209, 209, 209);
+    position: relative;
+    left: 130px;
+    width: 100px;
     
-    /* display: grid; */
+    
 }
 
-
+.addButton:hover{
+    background-color: rgb(112, 112, 112);
+}
 
 
 
