@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import "./home.css"
+import "./login.css"
 
 
 export default function Login({setToken}) {
@@ -32,25 +32,25 @@ export default function Login({setToken}) {
     return (
         <div>
         <div className="loginDiv">
-             <div className="formbox">
+             <div className="formbox2">
         <h3>Log In</h3>
         <form id="form" action="" method="post">
             <label for="">Email</label>
-            <input type="text" name="username"   onChange={(e) => {
+            <input type="text" name="username" placeholder="Enter your Email"  onChange={(e) => {
           changeEmail(e);
         }} className="asd"/>
             <label for="">Password</label>
-            <input type="password"   onChange={(e) => {
+            <input type="password" placeholder="Enter your Password"   onChange={(e) => {
           changePassword(e);
         }} id="" name="password" className="asd"/>
             <Link  to={`/`}>
             <input id="btn" type="submit" name="submit" value="Log In"  onClick={() => {
           checkLogin();
-        }} className="mainbox"/>
+        }} className="mainbox2"/>
             </Link>
             <label for="">New ?</label>
             <Link  to={`/SignUp`}>
-            <button  className="mainbox">Register Now</button>
+            <button  className="mainbox2">Register Now</button>
             </Link>
         </form>	
     </div>

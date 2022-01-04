@@ -93,7 +93,7 @@ a .mainbox{
 
 .join{
     white-space: nowrap; 
-    width: 160px; 
+    width: 156px; 
     overflow: hidden;
     text-overflow: clip;
 }

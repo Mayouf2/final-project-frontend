@@ -97,7 +97,7 @@ export default function OneBook({token}) {
             </div>
             <div className='description'>
               <h3>{books.name}</h3>
-              <p>By: {books.auther}</p>
+              <p>By: {books.auther}</p> <br />
               <p>{books.description}</p>
               <ReactStars
                 count={5}

@@ -104,7 +104,11 @@ export default function Home({token}) {
         headers:{authorization: "Bearer " + token},
         }
         )
-        setposts(res.data)
+        
+        const copiedArr= [...posts];
+        copiedArr.push(res.data)
+        setposts(copiedArr)
+
 }
 
 const deletePost = async (id, i)=>{
@@ -167,7 +171,7 @@ const result = Object.values(posts);
 
       <div className="rightSide">
       <h2>Reviews</h2>
-      {posts.map((elme , i)=>{
+      {posts && posts.map((elme , i)=>{
             return ( <div key={i}>
             <div className="HomePosts"> 
             

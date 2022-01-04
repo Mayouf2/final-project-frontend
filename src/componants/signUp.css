@@ -1,0 +1,146 @@
+
+.formbox3{
+    background:rgb(34,43,49,0.7);
+    color:white;
+    width: 40%;
+    border-top: 10px solid var(--secondaryred);
+    padding:2% 3%;
+    margin-top: 10px;
+    margin-left: 150px;
+    
+}
+.formbox3 *{
+    margin: 0;
+    
+}
+.formbox3 h3{
+    font-family: var(--mainfont);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+.formbox3 form label{
+    color: rgba(255, 255, 255, 0.8);
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 0.3rem;
+}
+.formbox3 form .asd{
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: none;
+    /* background: transparent; */
+    height: 2.8rem;
+    display: block;
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+form .mainbox3{
+    color: white;
+    box-shadow: none;
+    background: var(--secondaryred);
+    height: 2.8rem;
+    display: block;
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+}
+a .mainbox3{
+    margin: 0;
+    padding: 2%;
+}
+
+.loginDiv{
+    width: 50%;
+    margin: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+
+
+.formbox3 {
+        background: rgb(34,43,49,0.7);
+        color: white;
+        width: 150%;
+        border-top: 10px solid var(--secondaryred);
+        padding: 2% 3%;
+        margin-top: 10px;
+        margin-left: -40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+    
+
+.formbox3 *{
+    margin: 0;
+    
+}
+.formbox3 h3{
+    font-family: var(--mainfont);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+.formbox3 form label{
+    color: rgba(255, 255, 255, 0.8);
+    display: inline-block;
+    max-width: 50%;
+    margin-bottom: 0.3rem;
+}
+.formbox3 form .asd{
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: none;
+    /* background: transparent; */
+    height: 2.8rem;
+    display: block;
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+form .mainbox3{
+    color: white;
+    box-shadow: none;
+    background: var(--secondaryred);
+    height: 2.8rem;
+    display: block;
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+}
+a .mainbox3{
+    margin: 0;
+    padding: 2%;
+}
+
+.loginDiv{
+    width: 50%;
+    margin: auto;
+}
+
+
+
+
+}

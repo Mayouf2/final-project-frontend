@@ -68,8 +68,10 @@ export default function Header({ token, setToken }) {
             </div>
           ) : (
             <div className="navitems">
+            <div className="brand">
             <img className="logo" src="https://www.thesecret.tv/wp-content/uploads/2020/04/icon-books-578x384.png"/>
-          <h1 className="title">BadReads</h1>
+             <h1 className="title">Title</h1>
+            </div>
               <Link id="navLink" to="/">
                 Home
               </Link>

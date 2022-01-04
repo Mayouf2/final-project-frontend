@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {useHistory} from "react-router-dom"
 import axios from "axios";
-import "./home.css"
+import "./signUp.css"
 
 
 export default function SignUp() {
@@ -37,7 +37,7 @@ export default function SignUp() {
   };
   return (
     <div className="loginDiv">
-                 <div className="formbox">
+                 <div className="formbox3">
                  <h3>Sign Up</h3>
             <form id="form" >
             <label for="">Name</label>
@@ -69,7 +69,7 @@ export default function SignUp() {
       <button
       type="button"
       id="btn"
-      className="mainbox"
+      className="mainbox3"
         onClick={() => {
           addUser();
         }}

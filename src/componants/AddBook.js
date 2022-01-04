@@ -70,7 +70,16 @@ useEffect(() => {
     }, [user])
 
 
-
+    // const deleteUser = async (id, index)=>{
+    //     const res = await axios.delete(`http://localhost:5000/AdminDeleteUser/${id}`,
+    //     {headers:{authorization: "Bearer " + token},}
+    //     );
+        
+    //     if (res.data == "delete"){
+    //     setUser(user);
+        
+    //     }
+    //       }
 //  name ,auther, img ,description,
 
     return (
@@ -83,6 +92,7 @@ useEffect(() => {
                 <img className='imgs' src={elme.img} alt="" />
                 <h3 className='username'>{elme.name}</h3> <br />
                 <p className='join'>Joined {elme.time}</p>
+                {/* <button onClick={()=>{deleteUser()}}>delete</button> */}
                 </div>
              
                 </div>)

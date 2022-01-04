@@ -79,13 +79,15 @@ height: 25px;
 /* ////////////////////////////////////////////////////////////////////// */
 
 @media only screen and (max-width: 600px) {
-    body {
-      background-color: lightblue;
-    }
     .bookImg{
         width: 140px;
         height: 250px;
         
+    }
+
+    .book{
+        width: 100%;
+        display: flex;
     }
     .headLine{
         text-align: center;
@@ -101,6 +103,25 @@ height: 25px;
         margin-top: 10px;
     
     }
+    
+    .heart{
+        font-size: 35px;
+        color:rgb(182, 173, 173);
+        margin-top: 7px;
+         width: 30px;
+         outline: none;
+         text-transform: uppercase;
+         cursor: pointer;
+         font-weight: bold;
+    }
+         /* :hover{
+             color: rgb(192, 39, 39);
+         } */
+        .active {
+         color: rgb(192, 39, 39);
+        }
+     
+    
     .booksMain{
         display: flex;
         /* justify-content: center; */
@@ -108,11 +129,18 @@ height: 25px;
         /* gap: 70px; */
         flex-wrap: wrap;
         flex-direction: row;
-        justify-content: center;
+        /* justify-content: center; */
+        justify-content: space-between;
         margin: auto;
         
     }
     
+    
+    .bookImg{
+        width: 200px;
+        height: 250px;
+        
+    }
     
     .sreachDiv{
     display: flex;
@@ -135,4 +163,4 @@ height: 25px;
     #icon:hover{
         color: black;
     }
-  }
+}
