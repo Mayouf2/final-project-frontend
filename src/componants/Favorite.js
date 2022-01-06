@@ -45,9 +45,8 @@ export default function Favorite({token}) {
            <img className="FavImg" src={elme.img}
               alt="" />
            </Link> 
-           
-           <span>{elme.name}</span> {" "} 
-           <span>By: {elme.auther}</span>  {" "} 
+           <span className='info'>{elme.name}</span> {" "} 
+           <p className='auther'>By: {elme.auther}</p>  {" "} 
            <button className='deleteFav' onClick={()=>{removeLike(elme._id)}}><RiDeleteBin5Line/></button>
            {/* <p>{elme.description}</p> */}
            {/* <p>{elme.price}</p> */}

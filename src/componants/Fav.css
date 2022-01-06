@@ -7,9 +7,9 @@
 
 .fav{
     width: 900px;
-    background:rgb(34,43,49,0.7);
+    background:rgb(172, 172, 172);
     border: 2px solid rgba(255, 255, 255, 0.2);
-    color:white; 
+    height: 110px;
 
 }
 
@@ -19,9 +19,19 @@
 }
 
 .info{
-display: inline-block;
+position: relative;
+bottom: 80px;
+left: 1px;
+font-size: 20px;
+}
+.auther{
+    position: relative;
+    bottom: 75px;
+    left: 100px; 
 }
 
 .deleteFav{
-    display: inline-block;
+    position: relative;
+    left: 880px;
+    bottom: 35px;
 }

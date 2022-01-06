@@ -1,6 +1,5 @@
 .formbox{
-    background:rgb(34,43,49,0.7);
-    color:white;
+    background:rgba(185, 185, 185, 0.7);
     border-top: 10px solid var(--secondaryred);
     padding:2% 3%;
     margin-top: 10px;
@@ -17,7 +16,6 @@
     margin-bottom: 1rem;
 }
 .formbox form label{
-    color: rgba(255, 255, 255, 0.8);
     display: inline-block;
     max-width: 100%;
     margin-bottom: 0.3rem;
@@ -33,7 +31,6 @@
     margin-bottom: 1rem;
 }
 form .mainbox{
-    color: white;
     box-shadow: none;
     background: var(--secondaryred);
     height: 2.8rem;
@@ -57,8 +54,7 @@ a .mainbox{
 
 
 .users{
-    background:rgb(34,43,49,0.7);
-    color:white;
+    background:rgba(185, 185, 185, 0.7);
     border-top: 10px solid var(--secondaryred);
     padding:2% 3%;
     margin-top: 10px;
@@ -70,6 +66,7 @@ a .mainbox{
 .usersInfo{
     border: 1px solid black;
     margin: 10px;
+    background-color: white;
 }
 .username{
     position: relative;

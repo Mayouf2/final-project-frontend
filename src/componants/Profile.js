@@ -184,13 +184,13 @@ const [updateVes, setupdateVes] = useState(false)
             <input type="text" onChange={(e)=>{updatePassword(e)}}/> */}
             <label htmlFor="" >image</label>
             <input type="file"   onChange={(e)=>{updateImg(e)}}/>
-            {/* <button onClick={()=>{handleUpload()}}>Upload</button> */}
+            <button onClick={()=>{handleUpload()}}>Upload</button>
             <div className="output">
       </div>
             <label htmlFor=""  >Bio</label>
             <textarea name="" id="" value={bio}  cols="25" rows="5" onChange={(e)=>{updateBio(e)}}></textarea>
             <button onClick={()=>{
-                handleUpload();
+                // handleUpload();
                 updateUserName();
                 updateUserBio();
                 updateUserImage();
@@ -201,7 +201,7 @@ const [updateVes, setupdateVes] = useState(false)
 
     return (
         <div>
-        <h1 className='user'>Profile</h1>
+        {/* <h1 className='user'>Profile</h1> */}
 
         <div className='user'>
             <img className='profileImg' src={user.img} alt="" />

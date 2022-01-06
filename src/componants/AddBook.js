@@ -11,6 +11,10 @@ export default function AddBook({token}) {
     const [auther, setauther] = useState("")
     const [img, setimg] = useState("")
     const [description, setdescription] = useState("")
+    const [rating, setRating] = useState(0)
+    const [url, seturl] = useState("")
+
+
     const history = useHistory();
 
     const [user, setUser] = useState([])
@@ -29,6 +33,12 @@ const addImg = (e)=>{
 const addDescription = (e)=>{
     setdescription(e.target.value)
 }
+const addrating = (e)=>{
+    setRating(e.target.value)
+  }
+  const addUrl = (e)=>{
+    seturl(e.target.value)
+  }
 
 const addBook = async()=>{
     if(!name && !auther && !img && !description){
@@ -38,7 +48,9 @@ const addBook = async()=>{
           name:name ,
           auther:auther,
           img:img,
-          description:description
+          description:description,
+          rating:rating,
+          url:url
       },
       {
         headers:{authorization: "Bearer " + token},
@@ -108,7 +120,19 @@ useEffect(() => {
             <label for="">Image</label>
             <input type="text" className="asd" placeholder='img'  onChange={(e)=>{addImg(e)}}/>
             <label for="">description</label>
-            <input type="text" className="asd" placeholder='description'  onChange={(e)=>{addDescription(e)}}/>
+            <textarea name="" className="asd" placeholder='description'  onChange={(e)=>{addDescription(e)}} id="" cols="30" rows="10"></textarea>
+            <label for="">Link</label>
+            <input type="text" className="asd" placeholder='book link'  onChange={(e)=>{addUrl(e)}}/>
+            <label for="">Rating</label>
+            {/* <input type="text" className="asd" placeholder='Rating'  onChange={(e)=>{addrating(e)}}/> */}
+            <select id="cars" name="cars" onChange={(e)=>{addrating(e)}}>
+    <option value="0">Rate:</option>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+  </select> <br />
             <button type="button" id="btn" className='button' onClick={()=>{addBook()}}>Add</button>
             </form>
             </div>

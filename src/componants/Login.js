@@ -18,13 +18,19 @@ export default function Login({setToken}) {
   };
 
   const checkLogin = async () => {
+    if(email === "" || password === ""){
+      alert("Email and Password is required!!");
+    }
     try {
       const response = await axios.post("http://localhost:5000/login", {
         email: email,
         password: password,
       });
       setToken(response.data.token);
-      history.push("/Books");
+      if(response.status == 200){
+        history.push("/");
+      }
+      
     } catch (error) {
       console.log(error);
     }
@@ -43,7 +49,7 @@ export default function Login({setToken}) {
             <input type="password" placeholder="Enter your Password"   onChange={(e) => {
           changePassword(e);
         }} id="" name="password" className="asd"/>
-            <Link  to={`/`}>
+            <Link  to={`/Login`}>
             <input id="btn" type="submit" name="submit" value="Log In"  onClick={() => {
           checkLogin();
         }} className="mainbox2"/>

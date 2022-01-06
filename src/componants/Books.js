@@ -1,9 +1,11 @@
 import React , {useState , useEffect  } from 'react'
 import axios from 'axios'
 import "./books.css"
-import { FaHeart } from 'react-icons/fa';
+import { AiFillBook } from 'react-icons/ai';
 import { Link} from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import ReactStars from "react-rating-stars-component";
+
 
 
 
@@ -14,6 +16,8 @@ export default function Books({token}) {
     const [Books, setBooks] = useState([])
     const [findsearch , setFindsearch] = useState("")
     const [like, setLike] = useState([])
+    const [rating, setRating] = useState(0)
+
     const { id }= useParams()
 
     // const  [toggleHeart, setToggleHeart] = useState(false)
@@ -86,14 +90,18 @@ export default function Books({token}) {
               const changeCoolor=(e)=>{
                 setLike(!like)
               }
+
+              const ratingChanged = (newRating) => {
+      setRating(newRating);
+};
             
     
     return (
         <div>
         
-        <div className="headLine">
+        {/* <div className="headLine">
         <h1>Books</h1>
-        </div>
+        </div> */}
         
         <div className="sreachDiv">
         <input id='inputSearch'  type="text" placeholder="  search" onChange={(e)=>{searchFun(e)}}/>
@@ -114,25 +122,31 @@ export default function Books({token}) {
                 if(like[i]._id === elme._id){
                   return (
                    
-                   <div className="book"> 
+                   <div className="books"> 
             <Link  to={`/book/${elme._id}`}>
                 <img className="bookImg" src={elme.img}
                    alt="" />
                 </Link> 
                 <h3>{elme.name}</h3>
                 <p>By: {elme.auther}</p>
+                <ReactStars
+                count={5}
+                onChange={ratingChanged}
+                size={24}
+                value={elme.rating}
+                activeColor="#ffd700" />
                 {/* <p>{elme.description}</p> */}
                 {/* <p>{elme.price}</p> */}
                 {/* <div id='handle'  onClick={()=>{likedHandleClick(elme._id)}}><FaHeart style={{color:"black"}} onClick={()=>{changeColor(elme._id)}} /> </div>   */}
             
-                   <FaHeart style={{color:"red"}} onClick={()=>{removeLike(elme._id)}} />
+                   <AiFillBook size={20} style={{color:"green"}} onClick={()=>{removeLike(elme._id)}} />
                    </div>
                    
                   )
                 }
                }
             return ( <div key={i}>
-            <div className="book"> 
+            <div className="books"> 
             
             <Link  to={`/book/${elme._id}`}>
                 <img className="bookImg" src={elme.img}
@@ -140,10 +154,16 @@ export default function Books({token}) {
                 </Link> 
                 <h3>{elme.name}</h3>
                 <p>By: {elme.auther}</p>
+                <ReactStars
+                count={5}
+                onChange={ratingChanged}
+                size={24}
+                value={elme.rating}
+                activeColor="#ffd700" />
                 {/* <p>{elme.description}</p> */}
                 {/* <p>{elme.price}</p> */}
                 {/* <div id='handle'  onClick={()=>{likedHandleClick(elme._id)}}><FaHeart style={{color:"black"}} onClick={()=>{changeColor(elme._id)}} /> </div>   */}
-                <FaHeart style={{color:"black"}} onClick={()=>{likedHandleClick(elme._id)}} />
+                <AiFillBook size={20}  style={{color:"black"}} onClick={()=>{likedHandleClick(elme._id)}} />
             </div>
         </div>)
         })} 

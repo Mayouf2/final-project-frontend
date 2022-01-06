@@ -17,6 +17,7 @@ import { useParams } from 'react-router-dom';
 
 
 
+
 export default function Home({token}) {
   const [Books, setBooks] = useState([])
   const [like , setLikes] = useState([])
@@ -30,6 +31,8 @@ export default function Home({token}) {
   const [img, setimg] = useState("")
   const [url, seturl] = useState("")
   const [postsLikes, setPostsLikes] = useState([])
+  const [reviews, setreview] = useState(false)
+
   const { id }= useParams()
 
 
@@ -44,7 +47,10 @@ export default function Home({token}) {
       }
       }, [like]);
 
-
+      const click = () => {
+        
+        setreview(!reviews)
+}
 
 
       useEffect(() => {
@@ -66,6 +72,25 @@ export default function Home({token}) {
          get()
          
          }, [posts])
+         useEffect(() => {
+          const get = async () => {
+           await axios.get('http://localhost:5000/getbook' , {
+              headers:{authorization: "Bearer " + token},
+  
+           })
+           .then(res =>{
+             
+             setBooks(res.data)
+            //  console.log(res.data);
+           })
+           .catch(error => {
+             console.log(error ,"err");
+           })
+           }
+   
+           get()
+           
+           }, [])
          
    const addbookTitle = (e)=>{
     setbookTitle(e.target.value)
@@ -136,8 +161,53 @@ console.log(copiedArr);
       const ratingChanged = (newRating) => {
       console.log(newRating);       
 };
+
+
+
+
 const result = Object.values(posts);
 
+
+// function shuffleArray(array) {
+//   let i = array.length - 1;
+//   for (; i > 0; i--) {
+//     const j = Math.floor(Math.random() * (i + 1));
+//     const temp = array[i];
+//     array[i] = array[j];
+//     array[j] = temp;
+//   }
+//   return array;
+// }
+// const shuffledBooks  = shuffleArray(Books)
+let item = Books[Math.floor(Math.random()*Books.length)];
+
+const review = 
+       <div className="formbox1">
+            <h1>Review a book</h1>
+            <form id="form" >
+            <label for="">Title</label>
+            <input type="text" className="asd" placeholder='Title' onChange={(e)=>{addbookTitle(e)}}/>
+            <label for="">Auther</label>
+            <input type="text" className="asd" placeholder='Auther' onChange={(e)=>{addauther(e)}}/>
+            <label for="">Image</label>
+            <input type="text" className="asd" placeholder='image'  onChange={(e)=>{addImage(e)}}/>
+            <label for="">Link</label>
+            <input type="text" className="asd" placeholder='book link'  onChange={(e)=>{addUrl(e)}}/>
+            <label for="">Review</label> <br />
+            <textarea name="" id="" cols="38" rows="3" placeholder="Review" onChange={(e)=>{addDesc(e)}}></textarea> <br />
+            <label for="">Rating</label>
+            {/* <input type="text" className="asd" placeholder='Rating'  onChange={(e)=>{addrating(e)}}/> */}
+            <select id="cars" name="cars" onChange={(e)=>{addrating(e)}}>
+    <option value="0">Rate:</option>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+  </select> <br />
+            <button type="button" className="addButton" onClick={()=>{addPost();setreview(false);}}>Add</button>
+            </form>
+            </div>
 // console.log(result);
   return (
     <div >
@@ -156,7 +226,6 @@ const result = Object.values(posts);
            <span >By: {elme.auther}</span>  {" "} <br />
            <ReactStars
                 count={5}
-                onChange={ratingChanged}
                 size={24}
                 value={elme.rating}
                 activeColor="#ffd700" />
@@ -171,6 +240,10 @@ const result = Object.values(posts);
 
       <div className="rightSide">
       <h2>Reviews</h2>
+      <div>
+    <button className='review' onClick={click}>Review a book</button>
+    { reviews ? review : "" }
+    </div> 
       {posts && posts.map((elme , i)=>{
             return ( <div key={i}>
             <div className="HomePosts"> 
@@ -181,7 +254,7 @@ const result = Object.values(posts);
                 <img src={elme.user.img} alt="" className="HomeIgm"/>
                 <span className="HomeUserInfo">{elme.user.name}</span>
                 <h4 className="HomeBookInfo">{elme.bookTitle}</h4>
-                <h4 className="HomeBookInfo">By: {elme.auther}</h4>
+                <p className="HomeBookInfo">By: {elme.auther}</p>
                 <div className="stars">
                 <ReactStars
                 count={5}
@@ -209,36 +282,25 @@ const result = Object.values(posts);
         })} 
       </div>
       <div className="center">
-      <div className="formbox1">
-            <h1>Review a book</h1>
-            <form id="form" >
-            <label for="">Title</label>
-            <input type="text" className="asd" placeholder='Title' onChange={(e)=>{addbookTitle(e)}}/>
-            <label for="">Auther</label>
-            <input type="text" className="asd" placeholder='Auther' onChange={(e)=>{addauther(e)}}/>
-            <label for="">Image</label>
-            <input type="text" className="asd" placeholder='image'  onChange={(e)=>{addImage(e)}}/>
-            <label for="">Link</label>
-            <input type="text" className="asd" placeholder='book link'  onChange={(e)=>{addUrl(e)}}/>
-            <label for="">Review</label>
-            <textarea name="" id="" cols="51" rows="5" placeholder="Review" onChange={(e)=>{addDesc(e)}}></textarea>
-            <label for="">Rating</label>
-            {/* <input type="text" className="asd" placeholder='Rating'  onChange={(e)=>{addrating(e)}}/> */}
-            <select id="cars" name="cars" onChange={(e)=>{addrating(e)}}>
-    <option value="0">Rate:</option>
-    <option>1</option>
-    <option>2</option>
-    <option>3</option>
-    <option>4</option>
-    <option>5</option>
-  </select> <br />
-            <button type="button" className="addButton" onClick={()=>{addPost()}}>Add</button>
-            </form>
-            </div>
+        <h1>Recommendation</h1>
+           {Books.map((elme)=>{
+             return (
+               <div  className="RecHome">
+               <Link  to={`/book/${elme._id}`}>
+                <img className="RecbookImg" src={elme.img}
+                   alt="" />
+                </Link> 
+                 <span className="nameRec">{elme.name} </span>  <br />
+                 {" "}
+                 <p className="autherRec">By: {elme.auther}</p> <br />
+                 <a href={elme.url} target="_blank" className="Recurl">want to read?</a>
+
+               </div>
+             )
+           })}
       </div>
       </div>
       
     </div>
-    
   );
 }

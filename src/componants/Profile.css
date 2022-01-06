@@ -5,7 +5,7 @@
     font-family:Georgia, 'Times New Roman', Times, serif;
     font-size: 15px;
     width: 400px;
-    background:rgb(34,43,49,0.7);
+    background:rgb(172, 172, 172);
     border: 2px solid rgba(255, 255, 255, 0.2);
     margin-top: 30px;
 padding-bottom: 15px;
@@ -51,13 +51,33 @@ margin-top: 10px;
 }
 .del{
 
-    color: white;
-    background-color: rgb(179, 36, 36);
+    
+        background-color: rgb(255, 150, 150);
+        border-radius: 5px;
+        font-size: 15px;
+        border: none;
+        padding: 15px 22px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 4px 2px;
+        cursor: pointer;
+
+    
 }
 
 .up{
-    color: white;
-    background-color: rgb(36, 36, 179);
+    background-color: rgb(150, 150, 255);
+    border-radius: 5px;
+    font-size: 15px;
+    border: none;
+    padding: 15px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+ 
 }
 
 

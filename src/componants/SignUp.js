@@ -4,6 +4,8 @@ import axios from "axios";
 import "./signUp.css"
 
 
+
+
 export default function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -21,6 +23,11 @@ export default function SignUp() {
   };
 
   const addUser = async () => {
+    if(email === "" || password === "" || name === "" ){
+      
+      alert("Email, Password and Name is required!");
+      history.push("/SignUp")
+    }
       console.log({
         name: name,
         email: email,

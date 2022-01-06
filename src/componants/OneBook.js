@@ -89,7 +89,7 @@ export default function OneBook({token}) {
     return (
         <div>  
          {books?
-        <div>
+        <div >
         <div className='onebookmain'>
             <div className="book">
               <img className="bookImg" src={books.img} alt="" />
@@ -109,30 +109,30 @@ export default function OneBook({token}) {
           </div><div className='comments'>
               <div>
                 <input    type="text" onChange={(e) => { changeComment(e); } } ></input>
-                <select id="cars" name="cars" onChange={(e)=>{addrating(e)}}>
+                {/* <select id="cars" name="cars" onChange={(e)=>{addrating(e)}}>
     <option value="0">Rate:</option>
     <option>1</option>
     <option>2</option>
     <option>3</option>
     <option>4</option>
     <option>5</option>
-  </select>
+  </select> */}
                 <button onClick={()=>{addComment()}}>comment</button>
               </div>
               <h1>{books.comment && books.comment.map((elm, i) => {
                 return <div className='singleComment' key={i}>
 
                     {/* <img src={elm.img} alt="" /> */}
-                    <ReactStars
+                    {/* <ReactStars
                 count={5}
                 onChange={ratingChanged}
                 size={24}
                 value={elm.rating}
-                activeColor="#ffd700" />
+                activeColor="#ffd700" /> */}
                   <p> {elm.userName}:</p>
                   <p >{parse( elm.comment)}</p>
                   <p>{elm.rating}</p>
-                  <button onClick={() => { deletecomment(elm.comment); } }><RiDeleteBin5Line/> </button>
+                  <button className='deletecommentButton' onClick={() => { deletecomment(elm.comment); } }><RiDeleteBin5Line/> </button>
                 </div>;
               })}</h1>
               <div>
