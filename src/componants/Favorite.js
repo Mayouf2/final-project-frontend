@@ -20,7 +20,7 @@ export default function Favorite({token}) {
             const res = await axios.get("http://localhost:5000/like", {
               headers: { authorization: "Bearer " + token },
             });
-            console.log(res.data);
+            // console.log(res.data);
             setLikes (res.data);
           }
           }, [like]);

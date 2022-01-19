@@ -85,6 +85,9 @@ a .mainbox{
     display: flex;
     /* justify-content: flex-end; */
     padding-top: 20px;
+    
+    width: 90%;
+    
 }
 .leftSide{
     height: 100%;
@@ -95,8 +98,9 @@ a .mainbox{
 
 .rightSide{
     height: 100%;
-    width: 33%;
-    border: 1px solid black;
+    width: 40%;
+    /* border: 1px solid black; */
+    border-style: outset;
     /* padding-bottom: 169px; */
     /* background-color: rgb(216, 216, 216); */
 
@@ -112,7 +116,8 @@ a .mainbox{
 
 .favHome{
     margin-top: 10px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    border-style: outset;
     display: flex;
 }
 
@@ -135,7 +140,9 @@ a .mainbox{
 
 .Homebook{
     /* display: flex; */
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    border-style: outset;
+
     margin: 20px;
 }
 .HomebookImg{
@@ -148,6 +155,8 @@ a .mainbox{
 .HomePosts{
     /* display: flex; */
     border: 1px solid black;
+    /* border-style: outset; */
+
     margin: 10px;
     padding-top: 10px;
     background-color: white;
@@ -248,7 +257,7 @@ border-width: 5px;
     margin: 4px 2px;
     cursor: pointer;
     position: relative;
-    left: 260px;
+    left: 270px;
     bottom: 25px;
 }
 
@@ -258,25 +267,30 @@ border-width: 5px;
 }
 
 .RecHome{
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    border-style: outset;
+
     margin: 10px;
     display: grid;
+    height: 120px;
 }
 
 
 .nameRec{
     position: relative;
-    bottom: 100px;
+    bottom: 120px;
+    left: 120px;
 }
+
 .autherRec{
     position: relative;
-    bottom: 90px;
+    bottom: 130px;
     left: 120px;
 }
 
 .Recurl{
     position: relative;
-    bottom: 80px;
+    bottom: 140px;
     left: 125px;   
     background-color: rgb(77, 77, 77); 
     border: 3px solid rgb(77, 77, 77); 
@@ -285,7 +299,20 @@ border-width: 5px;
     width: 90px;
 }
 
+.Recstars{
+    position: relative;
+    bottom: 150px;
+    left: 120px;
+}
 
+.discussion{
+    position: relative;
+    bottom: 10px;
+    background-color: rgb(77, 77, 77); 
+    border: 3px solid rgb(77, 77, 77); 
+border-width: 5px;
+    color: white; 
+}
 
 
 
@@ -377,7 +404,9 @@ border-width: 5px;
 
 
 
-@media only screen and (max-width: 600px) {
+
+
+@media  (max-width: 600px) {
     *{
         margin: 0;
         padding: 0;
@@ -461,12 +490,15 @@ border-width: 5px;
     
     
     
-    
+    /* .whole{
+        width: 100%;
+    } */
     
     .mainHome{
         display: grid;
         justify-content: flex-end;
-        width: 100%;
+        width: 90%;
+        padding-left: 70px;
     }
     .leftSide{
         height: 100%;
@@ -478,7 +510,8 @@ border-width: 5px;
     .rightSide{
         height: 100%;
         width: 100%;
-        border: 1px solid black;
+        /* border: 1px solid black; */
+        border-style: outset;
         padding-bottom: 169px;
     }
     
@@ -492,7 +525,8 @@ border-width: 5px;
     
     .favHome{
         margin-top: 10px;
-        border: 1px solid black;
+        /* border: 1px solid black; */
+        border-style: outset;
         display: flex;
     }
     
@@ -515,7 +549,8 @@ border-width: 5px;
     
     .Homebook{
         /* display: flex; */
-        border: 1px solid black;
+        /* border: 1px solid black; */
+        border-style: outset;
         margin: 20px;
     }
     .HomebookImg{
@@ -527,7 +562,8 @@ border-width: 5px;
     
     .HomePosts{
         /* display: flex; */
-        border: 1px solid black;
+        /* border: 1px solid black; */
+        border-style: outset;
         margin: 10px;
         padding-top: 10px;
     }
@@ -545,7 +581,9 @@ border-width: 5px;
     }
     .deletePostButton{
         position: relative;
-        left: 250px;
+        left: 270px;
+        bottom: 9px;
+
     }
     
     .HomeBookInfo{
@@ -588,31 +626,99 @@ border-width: 5px;
     border-width: 5px;
         color: white;  
     }
+   
+.stars{
+    position: relative;
+    bottom: 110px;
+    left: 110px;
+}
+
+.time{
+    white-space: nowrap; 
+    width: 150px; 
+    overflow: hidden;
+    text-overflow: clip; 
+}
+
+.addButton{
+    background-color: rgb(209, 209, 209);
+    position: relative;
+    left: 130px;
+    width: 100px;
     
-    .stars{
-        position: relative;
-        bottom: 110px;
-        left: 110px;
-        padding-right: 122px;
-    }
     
-    .time{
-        white-space: nowrap; 
-        width: 152px; 
-        overflow: hidden;
-        text-overflow: clip; 
-    }
-    
-    .addButton{
-        background-color: rgb(209, 209, 209);
-        position: relative;
-        left: 130px;
-        width: 100px;
-        
-        
-    }
-    
-    .addButton:hover{
-        background-color: rgb(112, 112, 112);
-    } 
-  }
+}
+
+.addButton:hover{
+    background-color: rgb(112, 112, 112);
+}
+
+.review{
+    background-color: rgb(167, 167, 167);
+    border-radius: 5px;
+    font-size: 15px;
+    border: none;
+    padding: 15px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    position: relative;
+    left: 120px;
+    bottom: 25px;
+}
+
+.RecbookImg{
+    width: 120px;
+    height: 120px;
+}
+
+.RecHome{
+    /* border: 1px solid black; */
+    border-style: outset;
+    margin: 10px;
+    display: grid;
+    height: 120px;
+}
+
+
+.nameRec{
+    position: relative;
+    bottom: 120px;
+    left: 120px;
+    font-size: 13px;
+}
+
+.autherRec{
+    position: relative;
+    bottom: 130px;
+    left: 120px;
+}
+
+.Recurl{
+    position: relative;
+    bottom: 140px;
+    left: 125px;   
+    background-color: rgb(77, 77, 77); 
+    border: 3px solid rgb(77, 77, 77); 
+border-width: 5px;
+    color: white;  
+    width: 90px;
+}
+
+.Recstars{
+    position: relative;
+    bottom: 150px;
+    left: 120px;
+}
+
+.discussion{
+    position: relative;
+    bottom: 10px;
+    background-color: rgb(77, 77, 77); 
+    border: 3px solid rgb(77, 77, 77); 
+border-width: 5px;
+    color: white; 
+}
+}

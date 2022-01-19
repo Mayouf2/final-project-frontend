@@ -72,12 +72,12 @@ a .mainbox3{
 
 
 
-@media only screen and (max-width: 600px) {
+@media  (max-width: 600px) {
 
 
 .formbox3 {
-        background: rgb(34,43,49,0.7);
-        color: white;
+    background:rgb(172, 172, 172);
+    color: white;
         width: 150%;
         border-top: 10px solid var(--secondaryred);
         padding: 2% 3%;
@@ -86,6 +86,8 @@ a .mainbox3{
         display: flex;
         flex-direction: column;
         align-items: center;
+        position: relative;
+        left: 70px;
         
     }
     

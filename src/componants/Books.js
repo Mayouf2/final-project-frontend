@@ -5,6 +5,8 @@ import { AiFillBook } from 'react-icons/ai';
 import { Link} from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import ReactStars from "react-rating-stars-component";
+import { RiDeleteBin5Line } from 'react-icons/ri';
+
 
 
 
@@ -17,6 +19,8 @@ export default function Books({token}) {
     const [findsearch , setFindsearch] = useState("")
     const [like, setLike] = useState([])
     const [rating, setRating] = useState(0)
+    const [user, setUser] = useState([]);
+
 
     const { id }= useParams()
 
@@ -48,6 +52,25 @@ export default function Books({token}) {
          get()
          
          }, [])
+
+         useEffect(() => {
+        axios.get(`http://localhost:5000/user`,
+        
+        {headers: { authorization: "Bearer " + token },
+        },
+
+        )
+       
+        .then(res =>{
+            setUser(res.data)
+          
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    
+        
+    }, [user])
 
          useEffect(async () => {
         if(token){
@@ -82,7 +105,8 @@ export default function Books({token}) {
         const removeLike = async (id ,i)=>{
             const res = await axios.delete(`http://localhost:5000/like/${id}`,{
               headers:{authorization: "Bearer " + token},
-            });
+            }
+            );
         console.log(res.data);
         setLike(res);
  
@@ -94,6 +118,18 @@ export default function Books({token}) {
               const ratingChanged = (newRating) => {
       setRating(newRating);
 };
+
+
+const deleteBook = async (id , i)=>{
+  let res = await axios.delete(`http://localhost:5000/book/${id}` , {
+    headers:{authorization: "Bearer " + token},
+  })
+
+const copyArray=[...Books]
+copyArray.splice(i,1)
+  setBooks(copyArray)
+  
+}
             
     
     return (
@@ -140,6 +176,12 @@ export default function Books({token}) {
                 {/* <div id='handle'  onClick={()=>{likedHandleClick(elme._id)}}><FaHeart style={{color:"black"}} onClick={()=>{changeColor(elme._id)}} /> </div>   */}
             
                    <AiFillBook size={20} style={{color:"green"}} onClick={()=>{removeLike(elme._id)}} />
+                   {user.admin == true ? (
+                    <RiDeleteBin5Line onClick={()=>{deleteBook(elme._id , i)}}/>
+                   ):(
+                     <p></p>
+                   )}
+                   
                    </div>
                    
                   )
@@ -164,6 +206,11 @@ export default function Books({token}) {
                 {/* <p>{elme.price}</p> */}
                 {/* <div id='handle'  onClick={()=>{likedHandleClick(elme._id)}}><FaHeart style={{color:"black"}} onClick={()=>{changeColor(elme._id)}} /> </div>   */}
                 <AiFillBook size={20}  style={{color:"black"}} onClick={()=>{likedHandleClick(elme._id)}} />
+                {user.admin == true ? (
+                    <RiDeleteBin5Line onClick={()=>{deleteBook(elme._id , i)}}/>
+                   ):(
+                     <p></p>
+                   )}
             </div>
         </div>)
         })} 

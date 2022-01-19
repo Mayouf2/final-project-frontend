@@ -81,7 +81,7 @@ margin-top: 10px;
 }
 
 
-@media only screen and (max-width: 600px) {
+@media  (max-width: 600px) {
     .user{
         display: flex;
         color: white;
@@ -89,7 +89,7 @@ margin-top: 10px;
         font-family:Georgia, 'Times New Roman', Times, serif;
         font-size: 10px;
         width: 260px;
-        background:rgb(34,43,49,0.7);
+        background:rgb(172, 172, 172);
         border: 2px solid rgba(255, 255, 255, 0.2);
         margin-top: 30px;
     padding-bottom: 15px;
@@ -99,6 +99,9 @@ margin-top: 10px;
     align-items: center;
     margin: auto;
     margin-top: 10px;
+    position: relative;
+    left: 80px;
+    top: 80px;
     }
     
     .userup{

@@ -94,3 +94,112 @@ a .mainbox{
     overflow: hidden;
     text-overflow: clip;
 }
+
+
+
+@media (max-width: 600px) {
+
+
+    .wholee{
+        display: grid;
+        position: relative;
+        left: 70px;
+    }
+
+    .formbox{
+        background:rgba(185, 185, 185, 0.7);
+        border-top: 10px solid var(--secondaryred);
+        padding:2% 3%;
+        margin-top: 10px;
+        width: 90%;
+        
+    }
+    .formbox *{
+        margin: 0;
+        
+    }
+    .formbox h3{
+        font-family: var(--mainfont);
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    .formbox form label{
+        display: inline-block;
+        max-width: 100%;
+        margin-bottom: 0.3rem;
+    }
+    .formbox form .asd{
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        box-shadow: none;
+        /* background: transparent; */
+        height: 2.8rem;
+        display: block;
+        width: 100%;
+        border-radius: 4px;
+        margin-bottom: 1rem;
+    }
+    form .mainbox{
+        box-shadow: none;
+        background: var(--secondaryred);
+        height: 2.8rem;
+        display: block;
+        width: 100%;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+    }
+    a .mainbox{
+        margin: 0;
+        padding: 2%;
+    }
+    
+    .loginDiv{
+        width: 50%;
+        margin: auto;
+    }
+    
+    
+    .users{
+        background:rgba(185, 185, 185, 0.7);
+        border-top: 10px solid var(--secondaryred);
+        padding:2% 3%;
+        margin-top: 10px;
+        width: 90%;
+        float: right;
+    }
+    
+    
+    .usersInfo{
+        border: 1px solid black;
+        margin: 10px;
+        background-color: white;
+    }
+    .username{
+        position: relative;
+        left: 80px;
+        bottom: 50px;
+    }
+    
+    
+    .imgs{
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+    }
+    
+    .button{
+        background-color: rgb(209, 209, 209);
+        position: relative;
+        left: 130px;
+        width: 100px;
+    }
+    
+    .join{
+        white-space: nowrap; 
+        width: 156px; 
+        overflow: hidden;
+        text-overflow: clip;
+    }
+}

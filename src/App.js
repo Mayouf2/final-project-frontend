@@ -9,6 +9,8 @@ import SignUp from "./componants/SignUp"
 import OneBook from "./componants/OneBook"
 import Profile from "./componants/Profile"
 import AddBook from "./componants/AddBook"
+import Chat from "./componants/Chat"
+import UserProfile from "./componants/UserProfile";
 
 function App() {
   const [token, setToken] = useState(() => {
@@ -38,6 +40,15 @@ function App() {
       <Route path="/book/:id"  render={()=>{return <OneBook token={token}/>}}/>
       <Route path="/Profile" render={()=>{return <Profile token={token} setToken={setToken}/>}}/>
       <Route exact path="/AddBook" render={()=>{return <AddBook token={token}  />}}/>
+      <Route exact path="/Chat/:id/:name" render={()=>{return <Chat token={token}  />}}/>
+      <Route exact path="/UserProfile/:id/:name" render={()=>{return <UserProfile token={token}  />}}
+/>
+
+      {/* render={()=>{return <UserProfile token={token}  />}} */}
+
+
+      
+
 
 
       

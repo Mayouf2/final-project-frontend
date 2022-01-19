@@ -1,4 +1,4 @@
-import React  , {useEffect , useState} from "react";
+import React  , {useEffect , useReducer, useState} from "react";
 import "./home.css"
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -32,6 +32,8 @@ export default function Home({token}) {
   const [url, seturl] = useState("")
   const [postsLikes, setPostsLikes] = useState([])
   const [reviews, setreview] = useState(false)
+  const [user, setUser] = useState([])
+
 
   const { id }= useParams()
 
@@ -46,6 +48,25 @@ export default function Home({token}) {
         setLikes (res.data);
       }
       }, [like]);
+
+      useEffect(() => {
+        axios.get(`http://localhost:5000/user`,
+        
+        {headers: { authorization: "Bearer " + token },
+        },
+
+        )
+       
+        .then(res =>{
+            setUser(res.data)
+          
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    
+        
+    }, [user])
 
       const click = () => {
         
@@ -210,7 +231,7 @@ const review =
             </div>
 // console.log(result);
   return (
-    <div >
+    <div  className="whole">
     <div className="mainHome">
       <div className="leftSide">
       <h2>WANT TO READ</h2>
@@ -248,11 +269,13 @@ const review =
             return ( <div key={i}>
             <div className="HomePosts"> 
             
+
                 <img className="HomebookImg" src={elme.img}
                    alt="" />
                 
-                <img src={elme.user.img} alt="" className="HomeIgm"/>
-                <span className="HomeUserInfo">{elme.user.name}</span>
+
+              { elme.user &&  <img src={elme.user.img} alt="" className="HomeIgm"/>}
+              { elme.user && <span className="HomeUserInfo">{elme.user.name}</span>}
                 <h4 className="HomeBookInfo">{elme.bookTitle}</h4>
                 <p className="HomeBookInfo">By: {elme.auther}</p>
                 <div className="stars">
@@ -265,6 +288,11 @@ const review =
                 </div>
                 <a href={elme.url} target="_blank" className="url">want to read?</a>
                 <h3 className="HomeDesc">{elme.desc}</h3>
+                <Link to={`/Chat/${elme.user._id}/${elme.user.name}`}>
+
+                <span className="discussion">discuss ?</span>
+                </Link>
+
                 <p className="time">{elme.time}</p>
                 <div>
                  <p> 
@@ -274,13 +302,12 @@ const review =
                 <div className="HomeLikeButton">
                 {/* <FaHeart style={{color:"black"}} onClick={()=>{likedHandleClick(elme._id)}} /> */}
                 <h6 className="hide"></h6>
-                <RiDeleteBin5Line className="deletePostButton" onClick={()=>{deletePost(elme._id)}}/>
-
+                  <RiDeleteBin5Line className="deletePostButton" onClick={()=>{deletePost(elme._id)}}/>
                 </div>
             </div>
         </div>)
         })} 
-      </div>
+      </div> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /><br /> <br /> <br /> <br />
       <div className="center">
         <h1>Recommendation</h1>
            {Books.map((elme)=>{
@@ -293,6 +320,14 @@ const review =
                  <span className="nameRec">{elme.name} </span>  <br />
                  {" "}
                  <p className="autherRec">By: {elme.auther}</p> <br />
+                 <div className="Recstars">
+                <ReactStars
+                count={5}
+                onChange={ratingChanged}
+                size={20}
+                value={elme.rating}
+                activeColor="#ffd700" />
+                </div>
                  <a href={elme.url} target="_blank" className="Recurl">want to read?</a>
 
                </div>

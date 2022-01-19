@@ -38,6 +38,9 @@ export default function Header({ token, setToken }) {
               <Link id="navLink" to="/Favorite">
                 My books
               </Link>
+              {/* <Link id="navLink" to="/UserProfile">
+                Members
+              </Link> */}
 
               <div class="dropdown">
                 <img className="accountImg" src={user.img} alt="" />

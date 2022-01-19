@@ -100,7 +100,7 @@ height: 25px;
 /* ////////////////////////////////////////////////////////////////////// */
 /* ////////////////////////////////////////////////////////////////////// */
 
-@media only screen and (max-width: 600px) {
+@media  (max-width: 600px) {
     .bookImg{
         width: 140px;
         height: 250px;
@@ -153,7 +153,9 @@ height: 25px;
         flex-direction: row;
         /* justify-content: center; */
         justify-content: space-between;
-        margin: auto;
+        /* margin: auto; */
+        position: relative;
+        left: 100px;
         
     }
     
@@ -170,6 +172,8 @@ height: 25px;
     margin-top: 10px;
     justify-content: center;
     height: 25px;
+    position: relative;
+    left: 60px;
     }
     
     #icon{

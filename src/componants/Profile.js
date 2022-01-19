@@ -160,6 +160,7 @@ const [updateVes, setupdateVes] = useState(false)
         setBio(e.target.value)
     }
 
+
     const deleteProfile = async (id, index)=>{
         setToken("");
         const res = await axios.delete(`http://localhost:5000/user/${id}`,{
@@ -212,6 +213,7 @@ const [updateVes, setupdateVes] = useState(false)
              <div className='buttons'>
              <button  className='del'  onClick={()=>{deleteProfile()}}>Delete profile</button>
              <button className='up' onClick={on}>Update profile</button>
+
              {/* <img src={url || "http://via.placeholder.com/300"} alt="firebase-image" /> */}
              { updateVes ? Result : "" }
              </div>

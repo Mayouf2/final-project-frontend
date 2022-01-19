@@ -81,6 +81,10 @@ useEffect(() => {
         
     }, [user])
 
+    // const goToChat=(id,name)=>{
+    //   history.push(`/Chat/${id}`);
+    // }
+
 
     // const deleteUser = async (id, index)=>{
     //     const res = await axios.delete(`http://localhost:5000/AdminDeleteUser/${id}`,
@@ -95,7 +99,7 @@ useEffect(() => {
 //  name ,auther, img ,description,
 
     return (
-        <div>
+        <div className='wholee'>
         <div className='users'>
         <h2>Users</h2>
             {user && user.map((elme , i )=>{
@@ -104,7 +108,21 @@ useEffect(() => {
                 <img className='imgs' src={elme.img} alt="" />
                 <h3 className='username'>{elme.name}</h3> <br />
                 <p className='join'>Joined {elme.time}</p>
-                {/* <button onClick={()=>{deleteUser()}}>delete</button> */}
+                {/* <button onClick={()=>{goToChat(elme._id)}}>chat </button> */}
+
+                {/* <button onClick={()=>{deleteUser(elme._id)}}>delete</button> */}
+                {/* {elme.admin ? (
+                ""
+              ) : (
+                <button
+                  className="btn-users"
+                  onClick={() => {
+                    deleteUser(elme._id);
+                  }}
+                >
+                  Delete User
+                </button>
+              )} */}
                 </div>
              
                 </div>)
