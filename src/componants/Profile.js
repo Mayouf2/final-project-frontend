@@ -32,7 +32,7 @@ const [updateVes, setupdateVes] = useState(false)
 // const { id }= useParams()
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/user`,
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/user`,
         
         {headers: { authorization: "Bearer " + token },
         },
@@ -56,7 +56,7 @@ const [updateVes, setupdateVes] = useState(false)
     }
 
     const updateUserName = () =>{
-        const res = axios.put("http://localhost:5000/username" , 
+        const res = axios.put(`${process.env.REACT_APP_BACKEND_URL}/username` , 
         {
         newName:name ,
         },
@@ -66,7 +66,7 @@ const [updateVes, setupdateVes] = useState(false)
         setName(res.data)
         }
     const updateUserEmail = () =>{
-        const res = axios.put("http://localhost:5000/useremail" ,   {
+        const res = axios.put(`${process.env.REACT_APP_BACKEND_URL}/useremail` ,   {
         newEmail:email ,
         },
         {headers: { authorization: "Bearer " + token },
@@ -77,7 +77,7 @@ const [updateVes, setupdateVes] = useState(false)
         }
 
         const updateUserImage = () =>{
-        const res = axios.put("http://localhost:5000/userimage" , 
+        const res = axios.put(`${process.env.REACT_APP_BACKEND_URL}/userimage` , 
         {
         newImg:url
         },
@@ -88,7 +88,7 @@ const [updateVes, setupdateVes] = useState(false)
         setImage(res.data)
         }
         const updateUserBio = () =>{
-        const res = axios.put("http://localhost:5000/userbio" , 
+        const res = axios.put(`${process.env.REACT_APP_BACKEND_URL}/userbio` , 
         {
         newBio:bio ,
         },
@@ -163,7 +163,7 @@ const [updateVes, setupdateVes] = useState(false)
 
     const deleteProfile = async (id, index)=>{
         setToken("");
-        const res = await axios.delete(`http://localhost:5000/user/${id}`,{
+        const res = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/user/${id}`,{
           headers:{authorization: "Bearer " + token},
         });
         

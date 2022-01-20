@@ -10,7 +10,7 @@ export default function Header({ token, setToken }) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/user`, {
+      .get(`${process.env.REACT_APP_BACKEND_URL}/user`, {
         headers: { authorization: "Bearer " + token },
       })
       .then((res) => {

@@ -30,7 +30,7 @@ export default function OneBook({token}) {
 
     useEffect(async () => {
       if(token){
-        const result = await axios.get(`http://localhost:5000/book/${id}`,{
+        const result = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/book/${id}`,{
           headers: { authorization: "Bearer " + token },
         });
         setBooks(result.data);
@@ -39,7 +39,7 @@ export default function OneBook({token}) {
 
 
     useEffect(async () => {
-  const result = await axios.get(`http://localhost:5000/comment` , 
+  const result = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/comment` , 
   { headers: { authorization: "Bearer " + token } },
   ) 
   setcomments(result.data)
@@ -53,7 +53,7 @@ export default function OneBook({token}) {
       const addComment=async()=>{
           try {
             const result = await axios.post(
-                `http://localhost:5000/comment/${id}`,
+              `${process.env.REACT_APP_BACKEND_URL}/comment/${id}`,
                 {
                     comment:input
                 },
@@ -66,7 +66,7 @@ export default function OneBook({token}) {
       }
     const deletecomment =async (comment)=>{
         try {
-            const result = await axios.put(`http://localhost:5000/comment/${id}`,
+            const result = await axios.put(`${process.env.REACT_APP_BACKEND_URL}/comment/${id}`,
         {comment:comment},
         {headers: { authorization: "Bearer " + token }})
         setBooks({...books , comment: result.data.comment})

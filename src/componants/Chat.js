@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import "./Chat.css"
 
-const socket = io.connect("http://localhost:5000" , { transports : ['websocket'] });
+const socket = io.connect(`${process.env.REACT_APP_BACKEND_URL}` , { transports : ['websocket'] });
 
 
 let room = ""
@@ -39,7 +39,7 @@ export default function Chat({token}) {
 
     const getMessage=async()=>{
       console.log(room,"inget");
-      const res1= await axios.get(`http://localhost:5000/getChat/${room}`)
+      const res1= await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getChat/${room}`)
 
         setMessageList(res1.data.chatArr)
       
@@ -58,7 +58,7 @@ export default function Chat({token}) {
 
   }, [])
   useEffect(() => {
-    axios.get(`http://localhost:5000/user`,
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/user`,
     
     {headers: { authorization: "Bearer " + token },
     },
@@ -93,7 +93,7 @@ export default function Chat({token}) {
       };
 
 
-      const res= await axios.post("http://localhost:5000/saveChat",{
+      const res= await axios.post(`${process.env.REACT_APP_BACKEND_URL}/saveChat`,{
         room: room,
         userName:userName ,
         message: currentMessage,

@@ -41,7 +41,7 @@ export default function Home({token}) {
 
   useEffect(async () => {
     if(token){
-        const res = await axios.get("http://localhost:5000/like", {
+        const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/like`, {
           headers: { authorization: "Bearer " + token },
         });
         // console.log(res.data);
@@ -50,7 +50,7 @@ export default function Home({token}) {
       }, [like]);
 
       useEffect(() => {
-        axios.get(`http://localhost:5000/user`,
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/user`,
         
         {headers: { authorization: "Bearer " + token },
         },
@@ -76,7 +76,7 @@ export default function Home({token}) {
 
       useEffect(() => {
         const get = async () => {
-         await axios.get('http://localhost:5000/posts' , {
+         await axios.get(`${process.env.REACT_APP_BACKEND_URL}/posts` , {
             headers:{authorization: "Bearer " + token},
 
          })
@@ -95,7 +95,7 @@ export default function Home({token}) {
          }, [posts])
          useEffect(() => {
           const get = async () => {
-           await axios.get('http://localhost:5000/getbook' , {
+           await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getbook` , {
               headers:{authorization: "Bearer " + token},
   
            })
@@ -138,7 +138,7 @@ export default function Home({token}) {
     if(!desc && !img ){
         return;
       }
-      const res = await axios.post("http://localhost:5000/posts" , {
+      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/posts` , {
           desc:desc ,
           img:img,
           bookTitle:bookTitle,
@@ -158,7 +158,7 @@ export default function Home({token}) {
 }
 
 const deletePost = async (id, i)=>{
-const deletePost = await axios.delete(`http://localhost:5000/posts/${id}` , 
+const deletePost = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/posts/${id}` , 
 {
         headers:{authorization: "Bearer " + token},
         }
@@ -170,7 +170,7 @@ console.log(copiedArr);
 }
 
          const likedHandleClick = async (id) => {
-            let response = await axios.post(`http://localhost:5000/like/${id}`, {
+            let response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/like/${id}`, {
                 
             },  
             { headers: { authorization: "Bearer " + token } }

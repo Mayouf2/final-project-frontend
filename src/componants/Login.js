@@ -22,7 +22,7 @@ export default function Login({setToken}) {
       alert("Email and Password is required!!");
     }
     try {
-      const response = await axios.post("http://localhost:5000/login", {
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, {
         email: email,
         password: password,
       });

@@ -16,7 +16,7 @@ export default function UserProfile({token}) {
     
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/getOneUser/${id}`,
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/getOneUser/${id}`,
         
         {headers: { authorization: "Bearer " + token },
         },

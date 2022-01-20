@@ -11,8 +11,10 @@ import Profile from "./componants/Profile"
 import AddBook from "./componants/AddBook"
 import Chat from "./componants/Chat"
 import UserProfile from "./componants/UserProfile";
+require("dotenv").config();
 
 function App() {
+  console.log(process.env.REACT_APP_BACKEND_URL , "backend url");
   const [token, setToken] = useState(() => {
     const saved = localStorage.getItem("token");
     const initialValue = JSON.parse(saved);

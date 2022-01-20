@@ -35,7 +35,7 @@ export default function Books({token}) {
 
     useEffect(() => {
         const get = async () => {
-         await axios.get('http://localhost:5000/books' , {
+         await axios.get(`${process.env.REACT_APP_BACKEND_URL}/books` , {
             headers:{authorization: "Bearer " + token},
 
          })
@@ -54,7 +54,7 @@ export default function Books({token}) {
          }, [])
 
          useEffect(() => {
-        axios.get(`http://localhost:5000/user`,
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/user`,
         
         {headers: { authorization: "Bearer " + token },
         },
@@ -74,7 +74,7 @@ export default function Books({token}) {
 
          useEffect(async () => {
         if(token){
-            const res = await axios.get("http://localhost:5000/like", {
+            const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/like`, {
               headers: { authorization: "Bearer " + token },
             });
             // console.log(res.data);
@@ -93,7 +93,7 @@ export default function Books({token}) {
         }
 
         const likedHandleClick = async (id) => {
-            let response = await axios.post(`http://localhost:5000/like/${id}`, {
+            let response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/like/${id}`, {
                 
             },  
             { headers: { authorization: "Bearer " + token } }
@@ -103,7 +103,7 @@ export default function Books({token}) {
             }
 
         const removeLike = async (id ,i)=>{
-            const res = await axios.delete(`http://localhost:5000/like/${id}`,{
+            const res = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/like/${id}`,{
               headers:{authorization: "Bearer " + token},
             }
             );
@@ -121,7 +121,7 @@ export default function Books({token}) {
 
 
 const deleteBook = async (id , i)=>{
-  let res = await axios.delete(`http://localhost:5000/book/${id}` , {
+  let res = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/book/${id}` , {
     headers:{authorization: "Bearer " + token},
   })
 

@@ -44,7 +44,7 @@ const addBook = async()=>{
     if(!name && !auther && !img && !description){
         return;
       }
-      const res = await axios.post("http://localhost:5000/addbook" , {
+      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/addbook` , {
           name:name ,
           auther:auther,
           img:img,
@@ -63,7 +63,7 @@ const addBook = async()=>{
 
 
 useEffect(() => {
-        axios.get(`http://localhost:5000/getUsers`,
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/getUsers`,
         
         {headers: { authorization: "Bearer " + token },
         },
@@ -87,7 +87,7 @@ useEffect(() => {
 
 
     // const deleteUser = async (id, index)=>{
-    //     const res = await axios.delete(`http://localhost:5000/AdminDeleteUser/${id}`,
+    //     const res = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/AdminDeleteUser/${id}`,
     //     {headers:{authorization: "Bearer " + token},}
     //     );
         
